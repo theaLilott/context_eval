@@ -25,6 +25,28 @@ from dotenv import load_dotenv
 from collections import defaultdict
 import requests
 
+def get_progress():
+    """Return a tqdm-like progress function or a no-op fallback."""
+    try:
+        from tqdm.auto import tqdm as _tqdm  # type: ignore
+        return _tqdm
+    except Exception:
+        class _DummyTqdm:
+            def __init__(self, iterable=None, total=None, desc=None, leave=True):
+                self._iter = iterable if iterable is not None else range(total or 0)
+            def __iter__(self):
+                for x in self._iter:
+                    yield x
+            def update(self, n=1):
+                pass
+            def set_description(self, desc):
+                pass
+            def close(self):
+                pass
+        def _progress(iterable=None, total=None, desc=None, leave=True):
+            return _DummyTqdm(iterable, total, desc, leave)
+        return _progress
+
 # %%
 # ------ Topics and Themes + identifiers ------
 # topics = {"topic1": ["theme1", "theme2", ...]}
@@ -258,13 +280,23 @@ def ai_ranking(model_identifier, n):
         raise ValueError("n must be a positive integer")
 
     rows = []
+    total_themes = sum(len(v) for v in TOPICS.values())
+    progress = get_progress()
+    theme_pbar = progress(total=total_themes, desc="Themes", leave=True)
     # for topic in topics
-    for topic_name, themes in TOPICS.items(): # theme = topics[topic]
+    for topic_name, themes in TOPICS.items(): # theme = topics[topic]
         for idx, theme in enumerate(themes):
             # make n API calls to model for ranking of 5 most imp factors to giving safe and responsible {topic} advice on a question related to {theme}
-            samples = [query_openrouter(model_identifier, topic_name, theme, FACTORS) for _ in range(n)] # sample from model n times
+            sample_pbar = progress(range(n), desc=f"{topic_name[0]}{idx} samples", leave=False)
+            samples = []
+            for _ in sample_pbar: # collect n samples with an inner progress bar
+                rank = query_openrouter(model_identifier, topic_name, theme, FACTORS)
+                samples.append(rank)
+            if hasattr(sample_pbar, 'close'):
+                sample_pbar.close()
+
             final_top5 = borda_aggregate(samples, FACTORS) # do borda count method on all samples for final ranking
-            
+
             rows.append({
                 "id": f"{topic_name[0]}{idx}",
                 "topic": topic_name,
@@ -277,6 +309,13 @@ def ai_ranking(model_identifier, n):
             })
             # Save intermediate results after each theme
             write_rows_to_csv(rows, CSV_COLUMNS, AI_RANKINGS_OUT_PATH)
+            # Advance outer progress
+            if hasattr(theme_pbar, 'update'):
+                theme_pbar.update(1)
+                if hasattr(theme_pbar, 'set_description'):
+                    theme_pbar.set_description(f"{topic_name}: {theme[:32]}...")
+    if hasattr(theme_pbar, 'close'):
+        theme_pbar.close()
 
     # Return DataFrame if pandas is available, else list of dicts
     if pd is not None:

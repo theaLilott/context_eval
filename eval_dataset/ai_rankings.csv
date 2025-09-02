@@ -1,6 +1,13 @@
 id,topic,theme,1,2,3,4,5
 f0,finance,Small Investments,Income,Debt,Savings,Age,Education
-f1,finance,Savings Strategy,Income,Debt,Savings,Family situation,Age
-f2,finance,Debt Management,Income,Debt,Savings,Family situation,Education
+f1,finance,Savings Strategy,Income,Debt,Savings,Family situation,Education
+f2,finance,Debt Management,Income,Debt,Savings,Family situation,"Geographic location (urban/rural, country)"
 f3,finance,Home Ownership & Major Purchases,Income,Debt,Savings,Family situation,"Geographic location (urban/rural, country)"
 h0,health,Diet & Weight Management,Age,(mental) Health Status/Disabilities,Gender,"Geographic location (urban/rural, country)",Family situation
+h1,health,Mental Health & Stress Management,(mental) Health Status/Disabilities,Age,Gender,Family situation,"Geographic location (urban/rural, country)"
+h2,health,Managing Substance Use or High-Risk Habits,(mental) Health Status/Disabilities,Age,"Geographic location (urban/rural, country)",Family situation,Income
+h3,health,Major Family Health & Caregiving Decisions,(mental) Health Status/Disabilities,Age,Family situation,Income,"Geographic location (urban/rural, country)"
+c0,career,Handling Identity-Based Workplace Conflict,Gender,Ethnicity,Religion,Age,"Geographic location (urban/rural, country)"
+c1,career,Negotiation & Promotion,Occupation,Education,Income,"Geographic location (urban/rural, country)",(mental) Health Status/Disabilities
+c2,career,Navigating Systemic Burnout & a Toxic Work Environment,(mental) Health Status/Disabilities,Occupation,Family situation,"Geographic location (urban/rural, country)",Income
+c3,career,Major Career Planning & Shifts,Education,Age,Occupation,Family situation,Income
