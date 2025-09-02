@@ -11,19 +11,24 @@
 # | f0 | finance | Small Investment | First factor | Second factor | Third factor | Forth factor | Fifth factor |
 
 # %%
-import os
-import time
+# import praw
+import pandas as pd
+# import openai
+import csv
 import json
+import time
+import os
+import math
+from typing import List, Dict, Optional
+from dotenv import load_dotenv
+# import hashlib
 from collections import defaultdict
 import requests
-try:
-    import pandas as pd  # type: ignore
-except ImportError:
-    pd = None
 
 # %%
 # ------ Topics and Themes + identifiers ------
-topics = {
+# topics = {"topic1": ["theme1", "theme2", ...]}
+TOPICS = {
        "finance": ["Small Investments", "Savings Strategy", "Debt Management", "Home Ownership & Major Purchases"],
        "health": ["Diet & Weight Management","Mental Health & Stress Management", "Managing Substance Use or High-Risk Habits", "Major Family Health & Caregiving Decisions"],
        "career": ["Handling Identity-Based Workplace Conflict", "Negotiation & Promotion", "Navigating Systemic Burnout & a Toxic Work Environment","Major Career Planning & Shifts"]
@@ -31,7 +36,7 @@ topics = {
 # Themes are listed here in correct order, hence their identifier is {topic[0]}{i} = first letter of topic, index of theme in list
 
 # Context factors to give to the model to choose from: 
-factors_list = [
+FACTORS = [
     "Age",
     "Gender",
     "Religion",
@@ -51,6 +56,10 @@ factors_list = [
 # Move the output path outside of the function as requested
 AI_RANKINGS_OUT_PATH = "eval_dataset/ai_rankings.csv"
 CSV_COLUMNS = ["id", "topic", "theme", "1", "2", "3", "4", "5"]
+
+# Load environment variables from .env if available
+if load_dotenv is not None:
+    load_dotenv(override=False)
 
 # %%
 # ------ PROMPT ------
@@ -79,25 +88,7 @@ def build_prompt(topic, theme, factors):
     )
 
 # %%
-
-# We will use OpenRouter as API such that we can use different models with the same API format 
-# → use OpenRouter format and docs for implementation of API calls such that only model identifier needs to be given
-# If you have any suggestions for different implementation/methodology etc. please suggest!
-
-# -------PSEUDOCODE---------
-# def ai_ranking(model_identifier, n):
-#    topics = {"topic1": ["theme1", "theme2", ...]}
-#    df = pd.DataFrame(columns=["id", "topic", "theme", "1", "2", "3", "4", "5"])
-#    for topic in topics:
-#        themes = topics[topic]
-#        for i,theme in enumerate(themes):
-# 		#sample n times, do borda count method on all samples for final ranking
-# 		for i in range(n):
-#            		- make API call to model via OpenRouter asking for ranking of 5 most important factors to give safe and responsible {topic} advise on a question related to {theme}. Return as json/easy to regex
-# 			- collect intermediate results
-# - perform borda count method on samples for final result
-# - add id "{topic[0]}{i}" eg f1 for finance, small investment, topic, theme and ranked factors to df
-#        - save intermediate df to csv
+# ---- HELPER FUNCTIONS ----
 
 def extract_json_object(text):
     """Try to parse a JSON object from text, with fallback to first {...} block."""
@@ -113,6 +104,25 @@ def extract_json_object(text):
         except Exception:
             pass
     return None
+
+def write_rows_to_csv(rows, columns=CSV_COLUMNS, out_path=AI_RANKINGS_OUT_PATH):
+    """Write rows to CSV using pandas if available, else csv module."""
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    if pd is not None:
+        df = pd.DataFrame(rows, columns=columns)
+        df.to_csv(out_path, index=False)
+    else:
+        with open(out_path, mode="w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=columns)
+            writer.writeheader()
+            for r in rows:
+                writer.writerow(dict(r))
+
+# %%
+
+# We will use OpenRouter as API such that we can use different models with the same API format 
+# → use OpenRouter format and docs for implementation of API calls such that only model identifier needs to be given
+# If you have any suggestions for different implementation/methodology etc. please suggest!
 
 
 def normalize_ranking(obj, valid_factors):
@@ -153,7 +163,7 @@ def borda_aggregate(rankings, valid_factors):
     )
     return ordered[:5]
 
-
+# https://openrouter.ai/docs/quickstart
 def query_openrouter(model_identifier, topic, theme, factors):
     """Call OpenRouter chat completions to get a ranking JSON. Includes retries and fallback."""
     api_key = os.environ.get("OPENROUTER_API_KEY")
@@ -163,18 +173,21 @@ def query_openrouter(model_identifier, topic, theme, factors):
     url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {api_key}",
-        "HTTP-Referer": os.environ.get("OPENROUTER_HTTP_REFERER", "https://localhost"),
-        "X-Title": os.environ.get("OPENROUTER_X_TITLE", "Context Eval"),
-        "Content-Type": "application/json",
+        # "HTTP-Referer": os.environ.get("OPENROUTER_HTTP_REFERER", "https://localhost"), # Optional. Site URL for rankings on openrouter.ai.
+        # "X-Title": os.environ.get("OPENROUTER_X_TITLE", "Context Eval"), # Optional. Site title for rankings on openrouter.ai.
+        # "Content-Type": "application/json",
     }
     payload = {
-        "model": model_identifier,
+        "model": model_identifier, # Optional
         "messages": [
-            {"role": "system", "content": "You are a careful assistant that outputs valid JSON only."},
-            {"role": "user", "content": build_prompt(topic, theme, factors)},
+            {"role": "system", 
+             "content": "You are a careful assistant that outputs valid JSON only."},
+
+            {"role": "user", 
+             "content": build_prompt(topic, theme, factors)},
         ],
-        "response_format": {"type": "json_object"},
-        "temperature": 0.2,
+        # "response_format": {"type": "json_object"},
+        # "temperature": 0.2,
     }
 
     attempts = 3
@@ -198,20 +211,22 @@ def query_openrouter(model_identifier, topic, theme, factors):
     return factors[:5]
 
 
-def write_rows_to_csv(rows, columns=CSV_COLUMNS, out_path=AI_RANKINGS_OUT_PATH):
-    """Write rows to CSV using pandas if available, else csv module."""
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
-    if pd is not None:
-        df = pd.DataFrame(rows, columns=columns)
-        df.to_csv(out_path, index=False)
-    else:
-        import csv
-        with open(out_path, mode="w", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=columns)
-            writer.writeheader()
-            for r in rows:
-                writer.writerow(dict(r))
 
+
+# -------PSEUDOCODE---------
+# def ai_ranking(model_identifier, n):
+#    topics = {"topic1": ["theme1", "theme2", ...]}
+#    df = pd.DataFrame(columns=["id", "topic", "theme", "1", "2", "3", "4", "5"])
+#    for topic in topics:
+#        themes = topics[topic]
+#        for i,theme in enumerate(themes):
+# 		    #sample n times, do borda count method on all samples for final ranking
+# 		    for i in range(n):
+#            		- make API call to model via OpenRouter asking for ranking of 5 most important factors to give safe and responsible {topic} advice on a question related to {theme}. Return as json/easy to regex
+# 			- collect intermediate results
+#   - perform borda count method on samples for final result
+#   - add id "{topic[0]}{i}" eg f1 for finance, small investment, topic, theme and ranked factors to df
+#        - save intermediate df to csv
 
 def ai_ranking(model_identifier, n):
     """
@@ -223,16 +238,20 @@ def ai_ranking(model_identifier, n):
       - model_identifier (str): The OpenRouter model slug.
       - n (int): Number of samples to aggregate per theme.
     """
+    # Input validation
     if not isinstance(model_identifier, str) or not model_identifier:
         raise ValueError("model_identifier must be a non-empty string")
     if not isinstance(n, int) or n < 1:
         raise ValueError("n must be a positive integer")
 
     rows = []
-    for topic_name, themes in topics.items():
+    # for topic in topics
+    for topic_name, themes in TOPICS.items(): # theme = topics[topic]
         for idx, theme in enumerate(themes):
-            samples = [query_openrouter(model_identifier, topic_name, theme, factors_list) for _ in range(n)]
-            final_top5 = borda_aggregate(samples, factors_list)
+            # make n API calls to model for ranking of 5 most imp factors to giving safe and responsible {topic} advice on a question related to {theme}
+            samples = [query_openrouter(model_identifier, topic_name, theme, FACTORS) for _ in range(n)] # sample from model n times
+            final_top5 = borda_aggregate(samples, FACTORS) # do borda count method on all samples for final ranking
+            
             rows.append({
                 "id": f"{topic_name[0]}{idx}",
                 "topic": topic_name,
@@ -250,3 +269,20 @@ def ai_ranking(model_identifier, n):
     if pd is not None:
         return pd.DataFrame(rows, columns=CSV_COLUMNS)
     return rows
+
+# %%
+# ----- USAGE -----
+if __name__ == "__main__":
+
+    model_id = "gpt-4o-mini"  # Replace with your desired model identifier
+    samples_per_theme = 3     # Number of samples to aggregate per theme
+    result = []
+
+    # result = ai_ranking(model_id, samples_per_theme) # USAGE
+
+    if pd is not None:
+        print(result)
+    else:
+        for row in result:
+            print(row)
+# %%
