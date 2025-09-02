@@ -124,44 +124,53 @@ def write_rows_to_csv(rows, columns=CSV_COLUMNS, out_path=AI_RANKINGS_OUT_PATH):
 # → use OpenRouter format and docs for implementation of API calls such that only model identifier needs to be given
 # If you have any suggestions for different implementation/methodology etc. please suggest!
 
-
 def normalize_ranking(obj, valid_factors):
-    """Validate and normalize ranking to exactly 5 items from valid_factors."""
-    if not isinstance(obj, dict):
-        return None
+    """
+    Validate and normalize ranking to exactly 5 items from valid_factors.
+    - The AI output might be messy so this cleans it up ==> predictable and usable
+    """
+    # validation
+    if not isinstance(obj, dict): # reject if response isn't a json like {"ranking": [...]}
+        return None # failure
     ranking = obj.get("ranking")
-    if not isinstance(ranking, list):
+    if not isinstance(ranking, list): # reject if "ranking" key is missing or not a list (should be array of factors)
         return None
+    
     seen = set()
     cleaned = []
+    # only accept strings that are in valid_factors, ignore duplicates
     for item in ranking:
         if isinstance(item, str):
             s = item.strip()
             if s in valid_factors and s not in seen:
                 seen.add(s)
                 cleaned.append(s)
-    if len(cleaned) < 5:
+    # ensure we return exactly 5 factors, fill with remaining valid factors (ranking=0) if needed
+    if len(cleaned) < 5: # TODO - is this the best way to handle incomplete rankings?
         for f in valid_factors:
             if f not in seen:
                 cleaned.append(f)
             if len(cleaned) == 5:
                 break
-    return cleaned[:5]
+    return cleaned[:5] # return exactly 5 factors
 
 
 def borda_aggregate(rankings, valid_factors):
     """Aggregate rankings with Borda count (weights 5..1)."""
-    scores = defaultdict(int)
-    weights = [5, 4, 3, 2, 1]
-    for ranking in rankings:
-        for pos, factor in enumerate(ranking[:5]):
-            if factor in valid_factors:
-                scores[factor] += weights[pos]
+    scores = defaultdict(int) # creates default score of 0 for unseen factors
+    weights = [5, 4, 3, 2, 1] # 5 points for 1st place, 4 for 2nd, etc.
+    for ranking in rankings: # for each sample
+        for pos, factor in enumerate(ranking[:5]): # get top 5 factors
+            if factor in valid_factors: # only count valid factors
+                scores[factor] += weights[pos] # add corresponding weight to factor's score
+            else:
+                print(f"Warning: Ignoring invalid factor: '{factor}'")
+    # sort factors based o total score in descending order, tie-break by original order in valid_factors (arbitrary but consistent)
     ordered = sorted(
         valid_factors,
-        key=lambda f: (-scores.get(f, 0), valid_factors.index(f))
+        key=lambda f: (-scores.get(f, 0), valid_factors.index(f)) # tuple (negative score (0 default), original idx)
     )
-    return ordered[:5]
+    return ordered[:5] # return top 5 factors
 
 # https://openrouter.ai/docs/quickstart
 def query_openrouter(model_identifier, topic, theme, factors):
@@ -172,6 +181,7 @@ def query_openrouter(model_identifier, topic, theme, factors):
 
     url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
+        # TODO - what headers shall we use
         "Authorization": f"Bearer {api_key}",
         # "HTTP-Referer": os.environ.get("OPENROUTER_HTTP_REFERER", "https://localhost"), # Optional. Site URL for rankings on openrouter.ai.
         # "X-Title": os.environ.get("OPENROUTER_X_TITLE", "Context Eval"), # Optional. Site title for rankings on openrouter.ai.
@@ -180,38 +190,41 @@ def query_openrouter(model_identifier, topic, theme, factors):
     payload = {
         "model": model_identifier, # Optional
         "messages": [
+            # TODO - are these correct?
             {"role": "system", 
              "content": "You are a careful assistant that outputs valid JSON only."},
 
             {"role": "user", 
              "content": build_prompt(topic, theme, factors)},
         ],
+        # TODO - what other parameters shall we use?
         # "response_format": {"type": "json_object"},
         # "temperature": 0.2,
     }
 
-    attempts = 3
+    attempts = 3 # make multiple attempts if there's eg. a network or API error
     for i in range(attempts):
         try:
-            resp = requests.post(url, headers=headers, json=payload, timeout=60)
-            if resp.status_code != 200:
+            resp = requests.post(url, headers=headers, json=payload, timeout=60) # TODO - is 60s timeout ok?
+            if resp.status_code != 200: # 200 is success
                 raise RuntimeError(f"OpenRouter HTTP {resp.status_code}: {resp.text[:200]}")
             data = resp.json()
             content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
             parsed = extract_json_object(content)
-            normalized = normalize_ranking(parsed, factors)
+            normalized = normalize_ranking(parsed, factors) # ensure exactly 5 valid factors
             if normalized and len(normalized) == 5:
                 return normalized
         except Exception:
             pass
-        # Backoff between attempts except after last
+        # Backoff between attempts except after last (prevent spamming)
         if i < attempts - 1:
             time.sleep(1.5 * (i + 1))
     # Fallback on final failure
-    return factors[:5]
+    print(f"Warning: Failed to get valid response from model '{model_identifier}' for topic '{topic}', theme '{theme}'. Using fallback.")
+    return factors[:5] # TODO is this an ok fallback?
 
-
-
+# %%
+# ------- MAIN FUNCTION ---------
 
 # -------PSEUDOCODE---------
 # def ai_ranking(model_identifier, n):
@@ -275,10 +288,10 @@ def ai_ranking(model_identifier, n):
 if __name__ == "__main__":
 
     model_id = "gpt-4o-mini"  # Replace with your desired model identifier
-    samples_per_theme = 3     # Number of samples to aggregate per theme
+    samples_per_theme = 1     # Number of samples to aggregate per theme
     result = []
 
-    # result = ai_ranking(model_id, samples_per_theme) # USAGE
+    result = ai_ranking(model_id, samples_per_theme) # USAGE
 
     if pd is not None:
         print(result)

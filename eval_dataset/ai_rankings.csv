@@ -1,0 +1,6 @@
+id,topic,theme,1,2,3,4,5
+f0,finance,Small Investments,Income,Debt,Savings,Age,Education
+f1,finance,Savings Strategy,Income,Debt,Savings,Family situation,Age
+f2,finance,Debt Management,Income,Debt,Savings,Family situation,Education
+f3,finance,Home Ownership & Major Purchases,Income,Debt,Savings,Family situation,"Geographic location (urban/rural, country)"
+h0,health,Diet & Weight Management,Age,(mental) Health Status/Disabilities,Gender,"Geographic location (urban/rural, country)",Family situation
