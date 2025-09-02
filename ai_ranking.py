@@ -13,17 +13,17 @@
 # %%
 # import praw
 import pandas as pd
-# import openai
+from openai import OpenAI
 import csv
 import json
 import time
 import os
 import math
+import importlib
 from typing import List, Dict, Optional
 from dotenv import load_dotenv
 # import hashlib
 from collections import defaultdict
-import requests
 
 def get_progress():
     """Return a tqdm-like progress function or a no-op fallback."""
@@ -77,7 +77,8 @@ FACTORS = [
 # ------ OUTPUT CONFIG ------
 # Move the output path outside of the function as requested
 AI_RANKINGS_OUT_PATH = "eval_dataset/ai_rankings.csv"
-CSV_COLUMNS = ["id", "topic", "theme", "1", "2", "3", "4", "5"]
+# Include model identifier as a dedicated column
+CSV_COLUMNS = ["model", "id", "topic", "theme", "1", "2", "3", "4", "5"]
 
 # Load environment variables from .env if available
 if load_dotenv is not None:
@@ -128,21 +129,28 @@ def extract_json_object(text):
     return None
 
 def write_rows_to_csv(rows, columns=CSV_COLUMNS, out_path=AI_RANKINGS_OUT_PATH):
-    """Write rows to CSV using pandas if available, else csv module."""
+    """Append rows to CSV, creating it if missing. Uses pandas when available."""
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    file_exists = os.path.isfile(out_path)
     if pd is not None:
-        df = pd.DataFrame(rows, columns=columns)
-        df.to_csv(out_path, index=False)
+        df_new = pd.DataFrame(rows)
+        # Ensure all columns exist and are ordered
+        for c in columns:
+            if c not in df_new.columns:
+                df_new[c] = ""
+        df_new = df_new[columns]
+        df_new.to_csv(out_path, mode="a" if file_exists else "w", header=not file_exists, index=False)
     else:
-        with open(out_path, mode="w", newline="") as f:
+        with open(out_path, mode="a" if file_exists else "w", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=columns)
-            writer.writeheader()
+            if not file_exists:
+                writer.writeheader()
             for r in rows:
-                writer.writerow(dict(r))
+                writer.writerow({k: r.get(k, "") for k in columns})
 
 # %%
 
-# We will use OpenRouter as API such that we can use different models with the same API format 
+# We will use OpenRouter as API such that we can use different models with the same API format
 # → use OpenRouter format and docs for implementation of API calls such that only model identifier needs to be given
 # If you have any suggestions for different implementation/methodology etc. please suggest!
 
@@ -167,13 +175,8 @@ def normalize_ranking(obj, valid_factors):
             if s in valid_factors and s not in seen:
                 seen.add(s)
                 cleaned.append(s)
-    # ensure we return exactly 5 factors, fill with remaining valid factors (ranking=0) if needed
-    if len(cleaned) < 5: # TODO - is this the best way to handle incomplete rankings?
-        for f in valid_factors:
-            if f not in seen:
-                cleaned.append(f)
-            if len(cleaned) == 5:
-                break
+    if len(cleaned) < 5: 
+        return None # reject incomplete rankings
     return cleaned[:5] # return exactly 5 factors
 
 
@@ -194,44 +197,35 @@ def borda_aggregate(rankings, valid_factors):
     )
     return ordered[:5] # return top 5 factors
 
-# https://openrouter.ai/docs/quickstart
 def query_openrouter(model_identifier, topic, theme, factors):
-    """Call OpenRouter chat completions to get a ranking JSON. Includes retries and fallback."""
+    """Call OpenRouter chat completions via the OpenAI SDK to get a ranking JSON.
+    Includes retries and fallback.
+
+    Requires OPENROUTER_API_KEY to be set in the environment.
+    """
     api_key = os.environ.get("OPENROUTER_API_KEY")
     if not api_key:
         raise EnvironmentError("Missing OPENROUTER_API_KEY. Please set it in your environment.")
 
-    url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {
-        # TODO - what headers shall we use
-        "Authorization": f"Bearer {api_key}",
-        # "HTTP-Referer": os.environ.get("OPENROUTER_HTTP_REFERER", "https://localhost"), # Optional. Site URL for rankings on openrouter.ai.
-        # "X-Title": os.environ.get("OPENROUTER_X_TITLE", "Context Eval"), # Optional. Site title for rankings on openrouter.ai.
-        # "Content-Type": "application/json",
-    }
-    payload = {
-        "model": model_identifier, # Optional
-        "messages": [
-            # TODO - are these correct?
-            {"role": "system", 
-             "content": "You are a careful assistant that outputs valid JSON only."},
+    # Configure the OpenAI SDK client to use OpenRouter
+    client = OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=api_key,
+    )
 
-            {"role": "user", 
-             "content": build_prompt(topic, theme, factors)},
-        ],
-        # TODO - what other parameters shall we use?
-        # "response_format": {"type": "json_object"},
-        # "temperature": 0.2,
-    }
-
-    attempts = 3 # make multiple attempts if there's eg. a network or API error
+    attempts = 3
     for i in range(attempts):
         try:
-            resp = requests.post(url, headers=headers, json=payload, timeout=60) # TODO - is 60s timeout ok?
-            if resp.status_code != 200: # 200 is success
-                raise RuntimeError(f"OpenRouter HTTP {resp.status_code}: {resp.text[:200]}")
-            data = resp.json()
-            content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+            resp = client.chat.completions.create(
+                model=model_identifier,
+                messages=[
+                    {"role": "system", "content": "You are a careful assistant that outputs valid JSON only."},
+                    {"role": "user", "content": build_prompt(topic, theme, factors)},
+                ],
+                temperature=1.0,
+            )
+
+            content = resp.choices[0].message.content or ""
             parsed = extract_json_object(content)
             normalized = normalize_ranking(parsed, factors) # ensure exactly 5 valid factors
             if normalized and len(normalized) == 5:
@@ -265,9 +259,9 @@ def query_openrouter(model_identifier, topic, theme, factors):
 
 def ai_ranking(model_identifier, n):
     """
-    Query a model via OpenRouter for each topic/theme multiple times, aggregate with Borda count,
-    and write a CSV to AI_RANKINGS_OUT_PATH with columns:
-      id, topic, theme, 1, 2, 3, 4, 5
+    Query a model via OpenRouter (OpenAI SDK) for each topic/theme multiple times, aggregate with Borda count,
+        and append rows to AI_RANKINGS_OUT_PATH with columns:
+            model, id, topic, theme, 1, 2, 3, 4, 5
 
     Parameters:
       - model_identifier (str): The OpenRouter model slug.
@@ -297,7 +291,8 @@ def ai_ranking(model_identifier, n):
 
             final_top5 = borda_aggregate(samples, FACTORS) # do borda count method on all samples for final ranking
 
-            rows.append({
+            row = {
+                "model": model_identifier,
                 "id": f"{topic_name[0]}{idx}",
                 "topic": topic_name,
                 "theme": theme,
@@ -306,9 +301,11 @@ def ai_ranking(model_identifier, n):
                 "3": final_top5[2],
                 "4": final_top5[3],
                 "5": final_top5[4],
-            })
-            # Save intermediate results after each theme
-            write_rows_to_csv(rows, CSV_COLUMNS, AI_RANKINGS_OUT_PATH)
+            }
+            rows.append(row)
+            # Save only the new row to avoid duplicating prior rows and to allow
+            # different models to append to the same file
+            write_rows_to_csv([row], CSV_COLUMNS, AI_RANKINGS_OUT_PATH)
             # Advance outer progress
             if hasattr(theme_pbar, 'update'):
                 theme_pbar.update(1)
