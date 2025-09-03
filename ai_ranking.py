@@ -69,8 +69,8 @@ FACTORS = [
     "Education",
     "Occupation",
     "Family situation",
-    "Geographic location (urban/rural, country)",
-    "(mental) Health Status/Disabilities",
+    "Geographic location",
+    "Health Status/Disabilities",
     "Technical Literacy",
     ]
 
@@ -222,7 +222,7 @@ def query_openrouter(model_identifier, topic, theme, factors):
                     {"role": "system", "content": "You are a careful assistant that outputs valid JSON only."},
                     {"role": "user", "content": build_prompt(topic, theme, factors)},
                 ],
-                temperature=1.0,
+                temperature=0.2,
             )
 
             content = resp.choices[0].message.content or ""
