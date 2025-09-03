@@ -78,7 +78,7 @@ FACTORS = [
 # Move the output path outside of the function as requested
 AI_RANKINGS_OUT_PATH = "eval_dataset/ai_rankings.csv"
 # Include model identifier as a dedicated column
-CSV_COLUMNS = ["model", "id", "topic", "theme", "1", "2", "3", "4", "5"]
+CSV_COLUMNS = ["model", "id", "topic", "theme", "1", "2", "3", "4", "5", "kendalls_w"]
 
 # Load environment variables from .env if available
 if load_dotenv is not None:
@@ -190,12 +190,96 @@ def borda_aggregate(rankings, valid_factors):
                 scores[factor] += weights[pos] # add corresponding weight to factor's score
             else:
                 print(f"Warning: Ignoring invalid factor: '{factor}'")
-    # sort factors based o total score in descending order, tie-break by original order in valid_factors (arbitrary but consistent)
+    # sort factors based on total score in descending order, tie-break by original order in valid_factors (arbitrary but consistent)
     ordered = sorted(
         valid_factors,
         key=lambda f: (-scores.get(f, 0), valid_factors.index(f)) # tuple (negative score (0 default), original idx)
     )
     return ordered[:5] # return top 5 factors
+
+def compute_kendalls_w(rankings, valid_factors):
+    """
+    Compute Kendall's coefficient of concordance (W) across samples for a single theme.
+
+    We treat each sample as a (partial) top-k ranking over the full set of factors.
+    Items not present in a sample's top-k are assigned a tied average rank of positions k+1..m.
+
+    Parameters:
+      - rankings: List[List[str]] where each inner list is an ordered top-k list of factors
+      - valid_factors: List[str] the universe of m items being ranked
+
+    Returns:
+      - float: Kendall's W in [0, 1], or None if undefined (e.g., fewer than 2 samples)
+    """
+    # validation and basic setup
+    if not rankings or len(rankings) < 2:
+        return None  # undefined for fewer than 2 raters
+    m = len(valid_factors)
+    if m < 2:
+        return None
+
+    n = len(rankings)  # number of raters/samples
+
+    # Build rank matrix: shape (n, m)
+    # Lower rank number means more important (1 is best)
+    factor_index = {f: j for j, f in enumerate(valid_factors)}
+    rank_matrix = [[0.0] * m for _ in range(n)]
+
+    # Tie correction accumulator across raters: T = sum_i sum_g (t_g^3 - t_g)
+    tie_correction_total = 0.0
+
+    for i, ranking in enumerate(rankings):
+        # Ensure unique, valid factors, first occurrence order preserved
+        seen = set()
+        cleaned = []
+        for f in ranking:
+            if isinstance(f, str):
+                s = f.strip()
+                if s in factor_index and s not in seen:
+                    cleaned.append(s)
+                    seen.add(s)
+
+        k = len(cleaned)
+        # Assign explicit ranks 1..k for listed items
+        for pos, f in enumerate(cleaned):
+            j = factor_index[f]
+            rank_matrix[i][j] = float(pos + 1)
+
+        # Assign tied average rank for all unlisted items (positions k+1..m)
+        t = m - k  # size of tied group
+        if t > 0:
+            # average of ranks k+1..m
+            avg_tied_rank = (k + 1 + m) / 2.0
+            for f, j in factor_index.items():
+                if f not in seen:
+                    rank_matrix[i][j] = avg_tied_rank
+            # tie correction for this rater: (t^3 - t)
+            tie_correction_total += (t ** 3 - t)
+
+    # Sum ranks per item across raters
+    R = [0.0] * m
+    for j in range(m):
+        s = 0.0
+        for i in range(n):
+            s += rank_matrix[i][j]
+        R[j] = s
+
+    # Compute S = sum_j (R_j - n*(m+1)/2)^2
+    R_bar = n * (m + 1) / 2.0
+    S = sum((Rj - R_bar) ** 2 for Rj in R)
+
+    # Denominator with tie correction: n^2*(m^3 - m) - n * T
+    denom = (n ** 2) * (m ** 3 - m) - n * tie_correction_total
+    if denom <= 0:
+        return None
+
+    W = 12.0 * S / denom
+    # guard against tiny numerical drift
+    if W < 0:
+        W = 0.0
+    if W > 1:
+        W = 1.0
+    return float(W)
 
 def query_openrouter(model_identifier, topic, theme, factors):
     """Call OpenRouter chat completions via the OpenAI SDK to get a ranking JSON.
@@ -291,6 +375,9 @@ def ai_ranking(model_identifier, n):
 
             final_top5 = borda_aggregate(samples, FACTORS) # do borda count method on all samples for final ranking
 
+            # Calculate Kendall's W on the raw samples for this theme (with tie handling for partial rankings)
+            kendalls_w = compute_kendalls_w(samples, FACTORS)
+
             row = {
                 "model": model_identifier,
                 "id": f"{topic_name[0]}{idx}",
@@ -301,6 +388,7 @@ def ai_ranking(model_identifier, n):
                 "3": final_top5[2],
                 "4": final_top5[3],
                 "5": final_top5[4],
+                "kendalls_w": kendalls_w if kendalls_w is not None else "",
             }
             rows.append(row)
             # Save only the new row to avoid duplicating prior rows and to allow
