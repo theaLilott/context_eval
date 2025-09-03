@@ -211,25 +211,34 @@ def compute_kendalls_w(rankings, valid_factors):
     Returns:
       - float: Kendall's W in [0, 1], or None if undefined (e.g., fewer than 2 samples)
     """
-    # validation and basic setup
+    # --- Step 1: Validation and Setup ---
+    # Kendall's W requires at least 2 "raters" (samples) to compare.
     if not rankings or len(rankings) < 2:
-        return None  # undefined for fewer than 2 raters
+        return None  # Undefined for fewer than 2 raters.
+    
+    # m = number of items to be ranked. In our case, m=13 factors.
     m = len(valid_factors)
     if m < 2:
-        return None
+        return None # Cannot compute agreement if there's only one item to rank.
 
-    n = len(rankings)  # number of raters/samples
+    # n = number of raters / samples
+    n = len(rankings)
 
-    # Build rank matrix: shape (n, m)
-    # Lower rank number means more important (1 is best)
+    # --- Step 2: Build Rank Matrix, shape (n,m) ---
+    # Create a mapping from factor name to its column index (0-12) for easy lookup.
     factor_index = {f: j for j, f in enumerate(valid_factors)}
+    # Initialize an n x m matrix (n rows, 13 columns) with zeros.
+    # Each row represents a sample's ranking, and each column represents a factor.
     rank_matrix = [[0.0] * m for _ in range(n)]
 
-    # Tie correction accumulator across raters: T = sum_i sum_g (t_g^3 - t_g)
+    # T = Tie correction factor. This is needed because our rankings are partial (top 5).
+    # All unranked items are treated as a large tied group.
     tie_correction_total = 0.0
 
+    # --- Step 3: Populate Rank Matrix for each Sample ---
+    # Iterate through each of the n samples.
     for i, ranking in enumerate(rankings):
-        # Ensure unique, valid factors, first occurrence order preserved
+        # Clean the model's output to get a unique, valid list of factors.
         seen = set()
         cleaned = []
         for f in ranking:
@@ -239,42 +248,56 @@ def compute_kendalls_w(rankings, valid_factors):
                     cleaned.append(s)
                     seen.add(s)
 
+        # k = number of items ranked in this sample. This should be 5 as we reject incomplete rankings in query fn
         k = len(cleaned)
-        # Assign explicit ranks 1..k for listed items
+        # Assign ranks 1 through 5 to the factors present in the sample.
         for pos, f in enumerate(cleaned):
-            j = factor_index[f]
-            rank_matrix[i][j] = float(pos + 1)
+            j = factor_index[f] # Get column index for this factor.
+            rank_matrix[i][j] = float(pos + 1) # Rank is 1-indexed
 
-        # Assign tied average rank for all unlisted items (positions k+1..m)
-        t = m - k  # size of tied group
+        # --- Step 4: Handle Ties for Unranked Items ---
+        # t = number of unranked items. If k=5 and m=13, then t = 13 - 5 = 8.
+        t = m - k
         if t > 0:
-            # average of ranks k+1..m
+            # The 8 unranked items are tied for ranks 6, 7, 8, 9, 10, 11, 12, 13.
+            # The average of these ranks is (6 + 13) / 2 = 9.5.
             avg_tied_rank = (k + 1 + m) / 2.0
+            # Assign this average rank to all unranked factors for this sample.
             for f, j in factor_index.items():
                 if f not in seen:
                     rank_matrix[i][j] = avg_tied_rank
-            # tie correction for this rater: (t^3 - t)
+            
+            # Update the total tie correction factor. For t=8, this adds (8^3 - 8) = 504.
             tie_correction_total += (t ** 3 - t)
 
-    # Sum ranks per item across raters
+    # --- Step 5: Sum Ranks for Each Factor ---
+    # R = list to hold the sum of ranks for each of the m=13 factors.
     R = [0.0] * m
+    # For each factor (column j), sum the ranks given by all n samples.
     for j in range(m):
         s = 0.0
         for i in range(n):
             s += rank_matrix[i][j]
         R[j] = s
 
-    # Compute S = sum_j (R_j - n*(m+1)/2)^2
+    # --- Step 6: Calculate S, the Sum of Squared Deviations ---
+    # R_bar = the mean of the rank sums. For m=13, this is n * (13 + 1) / 2 = 7n.
+    # This is the expected sum of ranks for any factor if rankings were random.
     R_bar = n * (m + 1) / 2.0
+    # S measures the deviation of observed rank sums from the expected mean.
+    # A large S indicates high agreement.
     S = sum((Rj - R_bar) ** 2 for Rj in R)
 
-    # Denominator with tie correction: n^2*(m^3 - m) - n * T
+    # --- Step 7: Calculate Kendall's W ---
+    # The denominator of the W formula, adjusted for ties.
     denom = (n ** 2) * (m ** 3 - m) - n * tie_correction_total
     if denom <= 0:
-        return None
+        return None # Avoid division by zero if there's no variance.
 
+    # The final formula for Kendall's W.
     W = 12.0 * S / denom
-    # guard against tiny numerical drift
+    
+    # Guard against tiny numerical errors that might push W slightly out of the [0, 1] range.
     if W < 0:
         W = 0.0
     if W > 1:
