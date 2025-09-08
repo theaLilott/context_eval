@@ -435,7 +435,7 @@ def ai_ranking(model_identifier, n):
 if __name__ == "__main__":
 
     model_id = "gpt-4o-mini"  # Replace with your desired model identifier
-    samples_per_theme = 1     # Number of samples to aggregate per theme
+    samples_per_theme = 3     # Number of samples to aggregate per theme
     result = []
 
     result = ai_ranking(model_id, samples_per_theme) # USAGE
