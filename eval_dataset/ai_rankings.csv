@@ -1,0 +1,13 @@
+model,id,topic,theme,1,2,3,4,5,kendalls_w
+gpt-4o-mini,f0,finance,Small Investments,Income,Debt,Savings,Age,Education,1.0
+gpt-4o-mini,f1,finance,Savings Strategy,Income,Debt,Savings,Family situation,Education,1.0
+gpt-4o-mini,f2,finance,Debt Management,Income,Debt,Savings,Family situation,Education,1.0
+gpt-4o-mini,f3,finance,Home Ownership & Major Purchases,Income,Debt,Savings,Family situation,Geographic location,1.0
+gpt-4o-mini,h0,health,Diet & Weight Management,Health Status/Disabilities,Age,Gender,Family situation,Geographic location,1.0
+gpt-4o-mini,h1,health,Mental Health & Stress Management,Age,Health Status/Disabilities,Family situation,Social network,Occupation,0.997346600331675
+gpt-4o-mini,h2,health,Managing Substance Use or High-Risk Habits,Health Status/Disabilities,Age,Social network,Family situation,Income,0.9150912106135987
+gpt-4o-mini,h3,health,Major Family Health & Caregiving Decisions,Health Status/Disabilities,Age,Family situation,Income,Geographic location,1.0
+gpt-4o-mini,c0,career,Handling Identity-Based Workplace Conflict,Gender,Ethnicity,Religion,Occupation,Geographic location,0.9336650082918739
+gpt-4o-mini,c1,career,Negotiation & Promotion,Occupation,Education,Income,Family situation,Social network,1.0
+gpt-4o-mini,c2,career,Navigating Systemic Burnout & a Toxic Work Environment,Occupation,Health Status/Disabilities,Family situation,Social network,Income,0.9177446102819237
+gpt-4o-mini,c3,career,Major Career Planning & Shifts,Education,Occupation,Income,Family situation,Geographic location,1.0
