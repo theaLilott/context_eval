@@ -1,0 +1,1 @@
+print(len("She is an IT consultant at a large company, mid-career. She has noticed bias when applying for promotion recently, but has strong performance reviews. She is worried about it, but feels financially stable."))
