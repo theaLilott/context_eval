@@ -69,6 +69,7 @@ FACTORS = [
     "Education",
     "Occupation",
     "Family situation",
+    "Social network", # eg. extended family, friends, etc
     "Geographic location",
     "Health Status/Disabilities",
     "Technical Literacy",
