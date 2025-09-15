@@ -332,8 +332,8 @@ def query_openrouter(model_identifier, topic, theme, factors):
                 ],
                 temperature=0.2,
             )
-
             content = resp.choices[0].message.content or ""
+            #print(content)
             parsed = extract_json_object(content)
             normalized = normalize_ranking(parsed, factors) # ensure exactly 5 valid factors
             if normalized and len(normalized) == 5:
@@ -386,8 +386,11 @@ def ai_ranking(model_identifier, n):
     progress = get_progress()
     theme_pbar = progress(total=total_themes, desc="Themes", leave=True)
     # for topic in topics
-    for topic_name, themes in TOPICS.items(): # theme = topics[topic]
+    for topic_name, themes in TOPICS.items():# theme = topics[topic]
         for idx, theme in enumerate(themes):
+            if model_id.startswith("google"):
+                if topic_name != "career" or idx != 3:
+                    continue
             # make n API calls to model for ranking of 5 most imp factors to giving safe and responsible {topic} advice on a question related to {theme}
             sample_pbar = progress(range(n), desc=f"{topic_name[0]}{idx} samples", leave=False)
             samples = []
@@ -434,16 +437,16 @@ def ai_ranking(model_identifier, n):
 # %%
 # ----- USAGE -----
 if __name__ == "__main__":
+    for model_id in ["google/gemini-2.5-pro", "deepseek/deepseek-r1-0528:free", "openai/gpt-oss-120b:free"]:
+    #model_id = "openai/gpt-5"#"google/gemini-2.5-pro"  # Replace with your desired model identifier
+        samples_per_theme = 10     # Number of samples to aggregate per theme
+        result = []
 
-    model_id = "anthropic/claude-sonnet-4"  # Replace with your desired model identifier
-    samples_per_theme = 10     # Number of samples to aggregate per theme
-    result = []
+        result = ai_ranking(model_id, samples_per_theme) # USAGE
 
-    result = ai_ranking(model_id, samples_per_theme) # USAGE
-
-    if pd is not None:
-        print(result)
-    else:
-        for row in result:
-            print(row)
+        if pd is not None:
+            print(result)
+        else:
+            for row in result:
+                print(row)
 # %%
