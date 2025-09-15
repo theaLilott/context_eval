@@ -219,8 +219,8 @@ def main():
     out_df = pd.DataFrame(out_rows)
     cols = ['id', 'topic', 'theme', '1', '2', '3', '4', '5', 'kendalls_w']
     out_df = out_df[cols]
-    out_df.to_csv("likelihood_theme_rankings.csv", index=False)
-    print("Done! Saved to likelihood_theme_rankings.csv (all canonical themes processed)")
+    out_df.to_csv("eval_dataset/likelihood_rankings.csv", index=False)
+    print("Done! Saved to eval_dataset/likelihood_rankings.csv (all canonical themes processed)")
 
 if __name__ == '__main__':
     main()
