@@ -1,0 +1,2 @@
+timestamp,model,successful_api_calls,prompt_tokens,completion_tokens,total_tokens,themes,questions,models,variant_sets_built
+2025-09-17T19:28:07,gpt-4o-mini,1009,806798,521653,1328451,12,72,3,1008
