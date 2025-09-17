@@ -53,35 +53,133 @@ OUTPUT_COLUMNS = [
 ]
 
 # Stage 1: normalize (factor,value) → minimal first-person clause
-CLAUSE_NORMALIZER_PROMPT = (
-    "You are a writing assistant specializing in short, neutral clauses.\n"
-    "Turn the attribute below into a minimal first-person clause. Requirements:\n"
-    "- Start with 'I' or 'I'm'\n"
-    "- Use ONLY the given information\n"
-    "- Keep it neutral and concise\n"
-    "- Do NOT add or infer anything\n"
-    "- Return ONLY the clause (no period at the end)\n\n"
-    "Factor: {factor}\n"
-    "Value: {value}"
-)
 
-# Stage 2: request 5×L3 + 5×L5 variants 
-VARIANT_BUILDER_PROMPT = (
-    "You will receive:\n"
-    "1) A ranked top-5 list of factors\n"
-    "2) A mapping from factor -> canonical first-person clause (minimal, already normalized)\n\n"
-    "Your task is to construct natural-sounding context sentences using ONLY those clauses.\n"
-    "Return a single JSON object with two keys:\n"
-    "- level3: array of 5 distinct items; each item is an array of EXACTLY 3 clauses in order\n"
-    "- level5: array of 5 distinct items; each item is an array of EXACTLY 5 clauses in order\n\n"
-    "Rules:\n"
-    "- Use ONLY the provided clauses\n"
-    "- You can modify wording of clauses; you may join with commas and 'and' but keep clause strings intact\n"
-    "- level3 triplets must be distinct and based on the top-5 factors\n"
-    "- level5 quintets must be distinct permutations of the 5 clauses\n"
-    "- Avoid duplicates across variants (STRICT)\n"
-    "- Keep order inside each variant exactly as your chosen ordering\n"
-    "- Output ONLY the JSON object (no code fences)\n\n"
-    "Top-5 factors (ranked): {top5}\n"
-    "Clauses mapping (JSON): {clauses_json}"
-)
+CLAUSE_NORMALIZER_PROMPT = """You are a precise writing assistant.
+Convert the demographic attribute below into a SHORT, first-person clause.
+
+Requirements:
+- Begin with "I" or "I'm".
+- Use ALL of the given information in the Value. Do NOT drop any detail.
+- Do NOT add, infer, or rephrase beyond fluency (e.g., you may replace ">" with "over").
+- Keep it neutral and concise.
+- Return ONLY the clause (no period at the end, no quotes, no commentary).
+
+Examples:
+
+Factor: Debt
+Value: High-interest credit card debt
+→ I have high-interest credit card debt
+
+Factor: Family Situation
+Value: Single mother, one child with a chronic health condition
+→ I'm a single mother with one child who has a chronic health condition
+
+Factor: Income
+Value: High & Stable (> $150,000/year)
+→ I earn a stable income of over $150,000 per year
+
+Now process this input:
+
+Factor: {factor}
+Value: {value}
+"""
+
+# --- Stage 2 prompts: L3 & L5 -> objects { "clauses": [...], "sentence": "..." } ---
+
+VARIANT_BUILDER_PROMPT_L3 = """You will receive:
+- An ordered list of factors
+- A JSON mapping from factor → minimal first-person clause (already normalized)
+
+Task:
+- Produce exactly 5 distinct variants for CONTEXT LEVEL 3.
+- Each variant must include:
+  - "clauses": an array of EXACTLY 3 clause strings, each taken verbatim from the provided mapping (3 distinct factors).
+  - "sentence": ONE natural-sounding sentence that conveys ONLY the information in those 3 clauses.
+
+Rules:
+- Do NOT add or remove factors/values; do NOT introduce new facts.
+- Light fluency edits in the sentence are allowed (articles, conjunctions, reordering), but the meaning of each clause must be preserved.
+- The 5 variants must be distinct as clause triplets (no duplicate triples).
+- Output ONLY valid JSON with a single key "level3":
+  {{ "level3": [ {{ "clauses": [...], "sentence": "..." }}, ... ] }}   # exactly 5 items
+- The "sentence" must be a single sentence (no multiple sentences).
+
+Example (illustrative):
+Input mapping:
+{{
+  "Age": "I am 25 years old",
+  "Income": "I earn about $60,000 per year",
+  "Debt": "I have moderate student loan debt",
+  "Family": "I live with my partner, no children",
+  "Health": "I manage seasonal allergies"
+}}
+Example output:
+{{
+  "level3": [
+    {{ "clauses": ["I am 25 years old", "I earn about $60,000 per year", "I have moderate student loan debt"],
+      "sentence": "I am 25 years old, I earn about $60,000 per year, and I have moderate student loan debt." }},
+    {{ "clauses": ["I live with my partner, no children", "I am 25 years old", "I manage seasonal allergies"],
+      "sentence": "I am 25 years old, live with my partner without children, and manage seasonal allergies." }},
+    {{ "clauses": ["I earn about $60,000 per year", "I manage seasonal allergies", "I live with my partner, no children"],
+      "sentence": "I earn about $60,000 per year, manage seasonal allergies, and live with my partner without children." }},
+    {{ "clauses": ["I manage seasonal allergies", "I am 25 years old", "I have moderate student loan debt"],
+      "sentence": "I manage seasonal allergies, I am 25 years old, and I have moderate student loan debt." }},
+    {{ "clauses": ["I have moderate student loan debt", "I live with my partner, no children", "I earn about $60,000 per year"],
+      "sentence": "I have moderate student loan debt, live with my partner without children, and earn about $60,000 per year." }}
+  ]
+}}
+
+Now produce ONLY the JSON for the current task:
+
+Factors (ordered): {top5}
+Clauses mapping (JSON): {clauses_json}
+"""
+
+VARIANT_BUILDER_PROMPT_L5 = """You will receive:
+- An ordered list of factors
+- A JSON mapping from factor → minimal first-person clause (already normalized)
+
+Task:
+- Produce exactly 5 distinct variants for CONTEXT LEVEL 5.
+- Each variant must include:
+  - "clauses": an array of EXACTLY 5 clause strings, each taken verbatim from the provided mapping (use ALL factors once).
+  - "sentence": ONE natural-sounding sentence that conveys ONLY the information in those 5 clauses.
+
+Rules:
+- Do NOT add or remove factors/values; do NOT introduce new facts.
+- Light fluency edits in the sentence are allowed (articles, conjunctions, reordering), but the meaning of each clause must be preserved.
+- The 5 variants must be distinct as clause quintuples (no duplicate 5-clause sequences).
+- Output ONLY valid JSON with a single key "level5":
+  {{ "level5": [ {{ "clauses": [...], "sentence": "..." }}, ... ] }}   # exactly 5 items
+- The "sentence" must be a single sentence (no multiple sentences).
+
+Example (illustrative):
+Input mapping:
+{{
+  "Age": "I am 25 years old",
+  "Income": "I earn about $60,000 per year",
+  "Debt": "I have moderate student loan debt",
+  "Family": "I live with my partner, no children",
+  "Health": "I manage seasonal allergies"
+}}
+Example output:
+{{
+  "level5": [
+    {{ "clauses": ["I am 25 years old", "I earn about $60,000 per year", "I have moderate student loan debt", "I live with my partner, no children", "I manage seasonal allergies"],
+      "sentence": "I am 25 years old, make roughly $60,000 annually, have moderate student loan debt, live with my partner without children, and manage seasonal allergies." }},
+    {{ "clauses": ["I manage seasonal allergies", "I live with my partner, no children", "I have moderate student loan debt", "I earn about $60,000 per year", "I am 25 years old"],
+      "sentence": "I manage seasonal allergies, live with my partner without children, have moderate student loan debt, earn about $60,000 per year, and am 25 years old." }},
+    {{ "clauses": ["I earn about $60,000 per year", "I am 25 years old", "I manage seasonal allergies", "I live with my partner, no children", "I have moderate student loan debt"],
+      "sentence": "I earn about $60,000 per year, am 25 years old, manage seasonal allergies, live with my partner without children, and have moderate student loan debt." }},
+    {{ "clauses": ["I live with my partner, no children", "I have moderate student loan debt", "I manage seasonal allergies", "I earn about $60,000 per year", "I am 25 years old"],
+      "sentence": "I live with my partner without children, have moderate student loan debt, manage seasonal allergies, earn about $60,000 per year, and am 25 years old." }},
+    {{ "clauses": ["I have moderate student loan debt", "I earn about $60,000 per year", "I live with my partner, no children", "I am 25 years old", "I manage seasonal allergies"],
+      "sentence": "I have moderate student loan debt, earn about $60,000 per year, live with my partner without children, am 25 years old, and manage seasonal allergies." }}
+  ]
+}}
+
+Now produce ONLY the JSON for the current task:
+
+Factors (ordered): {top5}
+Clauses mapping (JSON): {clauses_json}
+"""
