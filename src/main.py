@@ -15,7 +15,7 @@ def main():
     for idx, row in df.iterrows():
         prompt_id = row['prompt_id']
         prompt = row['final_prompt']
-        ranking_type = row['ranking_type']
+        ranking_type = str(row['ranking_type']) if pd.notna(row['ranking_type']) else ""
         ai_model = row['ai_model'] if pd.notna(row['ai_model']) else ""
 
         models = get_models_for_row(ranking_type, ai_model)
