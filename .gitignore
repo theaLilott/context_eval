@@ -1,4 +1,5 @@
 .env
+tester/*
 venv
 data
 .venv/*
