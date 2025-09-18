@@ -1,11 +1,12 @@
 import os, json, time, logging
 import pandas as pd
 from typing import Dict, List, Tuple, Optional
-from openai import OpenAI
-
+from datetime import datetime
 from src.utils.constants import (
-    FACTORS, ID_TO_TOPIC_THEME, OUTPUT_COLUMNS, VARIANT_BUILDER_PROMPT_L3, 
-    VARIANT_BUILDER_PROMPT_L5,
+    FACTORS, ID_TO_TOPIC_THEME, OUTPUT_COLUMNS,
+)
+from src.utils.building_variants import (
+    build_level3_variants_with_llm, build_level5_variants_with_llm, append_variant_usage_row, VARIANT_USAGE, VARIANT_USAGE_CSV,
 )
 from src.utils.profile_utils import load_profiles_from_raw
 
@@ -21,55 +22,19 @@ OUT_PATH   = os.path.join(DATA_DIR, "evaluation_prompts.csv")
 # clause cache
 CLAUSE_CSV = os.path.join(DATA_DIR, "clause_cache.csv")
 
-# ------- Auth / client -------
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-if not OPENAI_API_KEY:
-    raise EnvironmentError("Missing OPENAI_API_KEY.")
-client = OpenAI(api_key=OPENAI_API_KEY)
-VARIANT_MODEL = "gpt-4o-mini"
-
 # ------- Logging -------
-logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
-
-# --- Usage tracking for variant calls ---
-VARIANT_USAGE_CSV = os.path.join(DATA_DIR, "variant_usage.csv")
-VARIANT_USAGE = {
-    "prompt_tokens": 0,
-    "completion_tokens": 0,
-    "total_tokens": 0,
-    "successful_api_calls": 0,
-}
-
-def accumulate_variant_usage(resp) -> None:
-    try:
-        u = getattr(resp, "usage", None) or {}
-        pt = int(getattr(u, "prompt_tokens", 0) or u.get("prompt_tokens", 0) or 0)
-        ct = int(getattr(u, "completion_tokens", 0) or u.get("completion_tokens", 0) or 0)
-        tt = int(getattr(u, "total_tokens", 0) or u.get("total_tokens", 0) or (pt + ct))
-        VARIANT_USAGE["prompt_tokens"] += pt
-        VARIANT_USAGE["completion_tokens"] += ct
-        VARIANT_USAGE["total_tokens"] += tt
-        VARIANT_USAGE["successful_api_calls"] += 1
-    except Exception:
-        pass
-
-def append_variant_usage_row(extra: dict):
-    import pandas as pd
-    from datetime import datetime
-    row = {
-        "timestamp": datetime.now().isoformat(timespec="seconds"),
-        "model": VARIANT_MODEL,
-        "successful_api_calls": VARIANT_USAGE["successful_api_calls"],
-        "prompt_tokens": VARIANT_USAGE["prompt_tokens"],
-        "completion_tokens": VARIANT_USAGE["completion_tokens"],
-        "total_tokens": VARIANT_USAGE["total_tokens"],
-    }
-    row.update(extra or {})
-    df = pd.DataFrame([row])
-    if not os.path.exists(VARIANT_USAGE_CSV):
-        df.to_csv(VARIANT_USAGE_CSV, index=False)
-    else:
-        df.to_csv(VARIANT_USAGE_CSV, mode="a", index=False, header=False)
+LOG_DIR = "logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
+LOG_FILE = os.path.join(LOG_DIR, f"context_eval_{run_id}.log")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    handlers=[
+        logging.FileHandler(LOG_FILE, mode="a", encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
 
 
 # ------- Globals resolved via shared loader -------
@@ -100,149 +65,18 @@ if not os.path.exists(CLAUSE_CSV):
         f"Missing clause cache at {CLAUSE_CSV}. Run generate_clauses.py first."
     )
 _clause_df = pd.read_csv(CLAUSE_CSV)
-CLAUSE_LOOKUP = {(row["factor"], row["value"]): row["clause"] for _, row in _clause_df.iterrows()}
+CLAUSE_LOOKUP = {
+    (row["factor"].strip(), str(row["value"]).strip()): row["clause"]
+    for _, row in _clause_df.iterrows()
+}
 
 def get_clause(factor, value):
-    # Robust fallback if a pair is missing from the cache
-    return CLAUSE_LOOKUP.get((factor, value), f"I have {factor.lower()} = {value}")
-
-# ---------------- Stage 2: build level3/level5 variants ----------------
-def parse_variant_response(raw: str, expect_key: str) -> List[Dict[str, object]]:
-    """
-    Accepts:
-      - {"level3":[{"clauses":[...],"sentence":"..."}, ...]}
-      - {"level5":[{"clauses":[...],"sentence":"..."}, ...]}
-      - Backward-compat: lists of lists [["...","...",...], ...]
-    Returns: [{"clauses":[...], "sentence":"..."}, ...]
-    """
-    data = json.loads(raw)
-    out = data.get(expect_key, data) if isinstance(data, dict) else data
-    if not isinstance(out, list):
-        raise ValueError("Invalid JSON shape for variants")
-
-    norm: List[Dict[str, object]] = []
-    for item in out:
-        if isinstance(item, dict) and "clauses" in item:
-            clauses = item.get("clauses", [])
-            sent = item.get("sentence", "")
-            if isinstance(clauses, list) and all(isinstance(x, str) for x in clauses):
-                norm.append({"clauses": clauses, "sentence": str(sent or "").strip()})
-        elif isinstance(item, list) and all(isinstance(x, str) for x in item):
-            norm.append({"clauses": item, "sentence": ""})
-    return norm
-
-def build_level3_variants_with_llm(
-    theme: str,
-    ranking_key: str,
-    top5: List[str],
-    factor_to_clause: Dict[str, str]
-) -> Dict[str, List[Dict[str, object]]]:
-    clauses_json = json.dumps({f: factor_to_clause[f] for f in top5}, ensure_ascii=False)
-    prompt = VARIANT_BUILDER_PROMPT_L3.format(
-        top5=json.dumps(top5),
-        clauses_json=clauses_json
-    )
-    for attempt in range(3):
-        try:
-            resp = client.chat.completions.create(
-                model=VARIANT_MODEL,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.5,
-            )
-            accumulate_variant_usage(resp)
-            raw = (resp.choices[0].message.content or "").strip()
-            return {"level3": parse_variant_response(raw, expect_key="level3")}
-        except Exception as e:
-            logging.warning(f"[{VARIANT_MODEL}] L3 variant builder error (attempt {attempt+1}/3): {e}")
-            time.sleep(1.5 * (attempt + 1))
-    # Hard fallback for L3 (dict objects; empty sentence -> we will join later)
-    c = [factor_to_clause[f] for f in top5]
-    fallback = [
-        {"clauses": c[:3], "sentence": ""},
-        {"clauses": [c[0], c[1], c[3]], "sentence": ""},
-        {"clauses": [c[0], c[2], c[4]], "sentence": ""},
-        {"clauses": [c[1], c[3], c[4]], "sentence": ""},
-        {"clauses": [c[2], c[3], c[4]], "sentence": ""},
-    ]
-    return {"level3": fallback}
-
-def build_level5_variants_with_llm(
-    theme: str,
-    ranking_key: str,
-    top5: List[str],
-    factor_to_clause: Dict[str, str]
-) -> Dict[str, List[Dict[str, object]]]:
-    clauses_json = json.dumps({f: factor_to_clause[f] for f in top5}, ensure_ascii=False)
-    prompt = VARIANT_BUILDER_PROMPT_L5.format(
-        top5=json.dumps(top5),
-        clauses_json=clauses_json
-    )
-    for attempt in range(3):
-        try:
-            resp = client.chat.completions.create(
-                model=VARIANT_MODEL,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.5,
-            )
-            accumulate_variant_usage(resp)
-            raw = (resp.choices[0].message.content or "").strip()
-            return {"level5": parse_variant_response(raw, expect_key="level5")}
-        except Exception as e:
-            logging.warning(f"[{VARIANT_MODEL}] L5 variant builder error (attempt {attempt+1}/3): {e}")
-            time.sleep(1.5 * (attempt + 1))
-    # Hard fallback for L5 (dict objects; empty sentence -> we will join later)
-    c = [factor_to_clause[f] for f in top5]
-    fallback = [
-        {"clauses": c, "sentence": ""},
-        {"clauses": c[::-1], "sentence": ""},
-        {"clauses": [c[1], c[3], c[0], c[4], c[2]], "sentence": ""},
-        {"clauses": [c[2], c[0], c[4], c[1], c[3]], "sentence": ""},
-        {"clauses": [c[3], c[4], c[1], c[2], c[0]], "sentence": ""},
-    ]
-    return {"level5": fallback}
-
-def dedupe_variant_objects(
-    variant_items: List[Dict[str, object]],
-    need: int,
-    k: int,
-    pool: List[str],
-) -> List[Dict[str, object]]:
-    """
-    Deduplicate by clause tuple, keep LLM-provided sentence when available.
-    If fewer than `need`, fill with permutations from `pool` (no sentence).
-    """
-    from itertools import permutations
-
-    # Map original items by their clause tuple to preserve LLM sentences
-    orig_map: Dict[Tuple[str, ...], str] = {}
-    for it in variant_items:
-        clauses = it.get("clauses", [])
-        sent = it.get("sentence", "")
-        if isinstance(clauses, list) and len(clauses) == k and all(isinstance(x, str) for x in clauses):
-            t = tuple(clauses)
-            if t not in orig_map:
-                orig_map[t] = str(sent or "").strip()
-
-    uniq: List[Dict[str, object]] = []
-    seen: set = set()
-
-    # Keep unique items in given order
-    for t, sent in orig_map.items():
-        if t not in seen:
-            uniq.append({"clauses": list(t), "sentence": sent})
-            seen.add(t)
-            if len(uniq) >= need:
-                return uniq[:need]
-
-    # Fill with permutations if needed (no sentence -> will fallback to join_clauses)
-    for cand in permutations(pool, k):
-        if len(uniq) >= need:
-            break
-        if cand not in seen:
-            uniq.append({"clauses": list(cand), "sentence": ""})
-            seen.add(cand)
-
-    return uniq[:need]
+    k = (str(factor).strip(), str(value).strip())
+    if k not in CLAUSE_LOOKUP:
+        logging.warning(f"Missing clause for: {k} (raw value: {repr(value)})")
+    else:
+        logging.debug(f"Clause found for: {k}")
+    return CLAUSE_LOOKUP.get(k, f"I have {factor.lower()} = {value}")
 
 # ---------------- Rankings loaders ----------------
 def load_single_ranking_map(df: pd.DataFrame, kind: str) -> Dict[str, Dict]:
@@ -295,8 +129,10 @@ def main():
 
     rows = []
     VARIANT_CACHE: Dict[Tuple[str, str, str, str], Dict[str, List[Dict[str, object]]]] = {}
-    # key = ( "L3"/"L5", theme, rank_key, prof_uid )
-    # value = {"level3":[{...}], "level5":[{...}]} but in our use we store one level per key
+    DROP_PROFILE_COLS = {
+    "ID", "vulnerability", "Column1", "Column2", "Column3", "Column4",
+    "Column5", "Column6", "topic", "theme", "__level_norm__", "profile_id"
+    }
 
     # ---- Level 0 
     for _, base in plain.iterrows():
@@ -308,7 +144,7 @@ def main():
         for prof in theme_profiles:
             level_val = str(prof.get(LEVEL_COL, "")).strip().lower()
             prof_uid  = prof.get("profile_id") or prof.get("ID")
-            vprof = {k: v for k, v in prof.items() if k not in {"ID", "vulnerability"}}
+            vprof = {k: v for k, v in prof.items() if k not in DROP_PROFILE_COLS}
             prof_json = json.dumps(vprof, ensure_ascii=False)
             pid0 = f"{request_id}_none_{level_val}_{prof_uid}_0_v0"
             rows.append({
@@ -318,13 +154,12 @@ def main():
                 "theme": theme,
                 "vulnerability_profile_level": level_val,
                 "vulnerability_profile": prof_json,
-                "ranking_type": "None",
-                "ai_model": "",
+                "ranking_type": "Baseline",
+                "ai_model": "All",
                 "context_level": 0,
                 "context_variant": 0,
                 "context_factors_used": "[]",
                 "final_prompt": question.strip(),
-                "deduped_context": "",
             })
 
     # ---- Contexted prompts
@@ -349,11 +184,17 @@ def main():
             for prof in theme_profiles:
                 level_val = str(prof.get(LEVEL_COL, "")).strip().lower()
                 prof_uid  = prof.get("profile_id") or prof.get("ID")
-                vprof = {k: v for k, v in prof.items() if k not in {"ID", "vulnerability"}}
+                logging.info(f"--- Processing Theme(Relevance & Likelihood): '{theme}', Ranking: '{kind}', Profile: '{prof_uid}', Top5 Factors: {top5}")
+                vprof = {k: v for k, v in prof.items() if k not in DROP_PROFILE_COLS}
                 prof_json = json.dumps(vprof, ensure_ascii=False)
 
                 # Build clauses via cache
+                for f in top5:
+                    raw_val = prof.get(f, "")
+                    norm_val = profile_lookup(prof, f)
+                    logging.debug(f"   Factor '{f}': Raw='{raw_val}' | Normalized='{norm_val}'")
                 factor_to_clause = {f: get_clause(f, profile_lookup(prof, f)) for f in top5}
+                logging.info(f"   factor_to_clause: {factor_to_clause}")
 
                 # L1
                 l1_clause = factor_to_clause[top5[0]].rstrip(".")
@@ -367,12 +208,11 @@ def main():
                     "vulnerability_profile_level": level_val,
                     "vulnerability_profile": prof_json,
                     "ranking_type": kind,
-                    "ai_model": "",
+                    "ai_model": "All",
                     "context_level": 1,
                     "context_variant": 0,
                     "context_factors_used": json.dumps([top5[0]], ensure_ascii=False),
                     "final_prompt": final_prompt,
-                    "deduped_context": "",
                 })
 
                 # L3/L5 
@@ -381,17 +221,12 @@ def main():
                 # L3
                 cache_key_l3 = ("L3", theme, rank_key, prof_uid)
                 if cache_key_l3 not in VARIANT_CACHE:
-                    VARIANT_CACHE[cache_key_l3] = build_level3_variants_with_llm(theme, rank_key, top5, factor_to_clause)
+                    VARIANT_CACHE[cache_key_l3] = build_level3_variants_with_llm(theme, rank_key, top5[:3], factor_to_clause)
                 varset_l3 = VARIANT_CACHE[cache_key_l3]
-
-                pool = [factor_to_clause[f] for f in top5]
-                orig_l3_map = {tuple(item["clauses"]): item.get("sentence","") for item in varset_l3.get("level3", [])}
-                lvl3_items = dedupe_variant_objects(varset_l3.get("level3", []), need=5, k=3, pool=pool)
+                lvl3_items = varset_l3.get("level3", [])
 
                 for vi, item in enumerate(lvl3_items, start=1):
-                    t = tuple(item["clauses"])
-                    deduped_flag = "llm" if t in orig_l3_map else "deduped"
-                    sentence = item["sentence"] or join_clauses([c.rstrip(".") for c in item["clauses"]])
+                    context_text = item["context_text"] or join_clauses([c.rstrip(".") for c in item["clauses"]])
                     pid = f"{request_id}_{kind.lower()}_{level_val}_{prof_uid}_3_v{vi}"
                     rows.append({
                         "prompt_id": pid,
@@ -401,26 +236,21 @@ def main():
                         "vulnerability_profile_level": level_val,
                         "vulnerability_profile": prof_json,
                         "ranking_type": kind,
-                        "ai_model": "",
+                        "ai_model": "All",
                         "context_level": 3,
                         "context_variant": vi,
-                        "context_factors_used": json.dumps(top5, ensure_ascii=False),
-                        "final_prompt": f"{sentence} {question}".strip(),
-                        "deduped_context": deduped_flag,
+                        "context_factors_used": json.dumps(top5[:3], ensure_ascii=False),
+                        "final_prompt": f"{context_text} {question}".strip(),
                     })
 
                 cache_key_l5 = ("L5", theme, rank_key, prof_uid)
                 if cache_key_l5 not in VARIANT_CACHE:
                     VARIANT_CACHE[cache_key_l5] = build_level5_variants_with_llm(theme, rank_key, top5, factor_to_clause)
                 varset_l5 = VARIANT_CACHE[cache_key_l5]
-
-                orig_l5_map = {tuple(item["clauses"]): item.get("sentence","") for item in varset_l5.get("level5", [])}
-                lvl5_items = dedupe_variant_objects(varset_l5.get("level5", []), need=5, k=5, pool=pool)
+                lvl5_items = varset_l5.get("level5", [])
 
                 for vi, item in enumerate(lvl5_items, start=1):
-                    t = tuple(item["clauses"])
-                    deduped_flag = "llm" if t in orig_l5_map else "deduped"
-                    sentence = item["sentence"] or join_clauses([c.rstrip(".") for c in item["clauses"]])
+                    context_text = item["context_text"] or join_clauses([c.rstrip(".") for c in item["clauses"]])
                     pid = f"{request_id}_{kind.lower()}_{level_val}_{prof_uid}_5_v{vi}"
                     rows.append({
                         "prompt_id": pid,
@@ -430,12 +260,11 @@ def main():
                         "vulnerability_profile_level": level_val,
                         "vulnerability_profile": prof_json,
                         "ranking_type": kind,
-                        "ai_model": "",
+                        "ai_model": "All",
                         "context_level": 5,
                         "context_variant": vi,
                         "context_factors_used": json.dumps(top5, ensure_ascii=False),
-                        "final_prompt": f"{sentence} {question}".strip(),
-                        "deduped_context": deduped_flag,
+                        "final_prompt": f"{context_text} {question}".strip(),
                     })
 
         # --- AI (per model)
@@ -449,10 +278,18 @@ def main():
             for prof in theme_profiles:
                 level_val = str(prof.get(LEVEL_COL, "")).strip().lower()
                 prof_uid  = prof.get("profile_id") or prof.get("ID")
-                vprof = {k: v for k, v in prof.items() if k not in {"ID", "vulnerability"}}
+                logging.info(f"--- Processing Theme(AI): '{theme}', Model: '{model}', Profile: '{prof_uid}', Top5 Factors: {top5}")
+                vprof = {k: v for k, v in prof.items() if k not in DROP_PROFILE_COLS}
                 prof_json = json.dumps(vprof, ensure_ascii=False)
 
+                for f in top5:
+                    raw_val = prof.get(f, "")
+                    norm_val = profile_lookup(prof, f)
+                    logging.debug(f"   Factor '{f}': Raw='{raw_val}' | Normalized='{norm_val}'")
+
                 factor_to_clause = {f: get_clause(f, profile_lookup(prof, f)) for f in top5}
+
+                logging.info(f"   factor_to_clause: {factor_to_clause}")
 
                 # L1
                 l1_clause = factor_to_clause[top5[0]].rstrip(".")
@@ -470,7 +307,6 @@ def main():
                     "context_variant": 0,
                     "context_factors_used": json.dumps([top5[0]], ensure_ascii=False),
                     "final_prompt": f"{l1_clause}. {question}".strip(),
-                    "deduped_context": "",
                 })
 
                 # L3/L5
@@ -479,16 +315,12 @@ def main():
                 # L3
                 cache_key_l3 = ("L3", theme, rank_key, prof_uid)
                 if cache_key_l3 not in VARIANT_CACHE:
-                    VARIANT_CACHE[cache_key_l3] = build_level3_variants_with_llm(theme, rank_key, top5, factor_to_clause)
+                    VARIANT_CACHE[cache_key_l3] = build_level3_variants_with_llm(theme, rank_key, top5[:3], factor_to_clause)
                 varset_l3 = VARIANT_CACHE[cache_key_l3]
+                lvl3_items = varset_l3.get("level3", [])
 
-                pool = [factor_to_clause[f] for f in top5]
-                orig_l3_map = {tuple(item["clauses"]): item.get("sentence","") for item in varset_l3.get("level3", [])}
-                lvl3_items = dedupe_variant_objects(varset_l3.get("level3", []), need=5, k=3, pool=pool)
                 for vi, item in enumerate(lvl3_items, start=1):
-                    t = tuple(item["clauses"])
-                    deduped_flag = "llm" if t in orig_l3_map else "deduped"
-                    sentence = item["sentence"] or join_clauses([c.rstrip(".") for c in item["clauses"]])
+                    context_text = item["context_text"] or join_clauses([c.rstrip(".") for c in item["clauses"]])
                     pid = f"{request_id}_ai-{model}_{level_val}_{prof_uid}_3_v{vi}"
                     rows.append({
                         "prompt_id": pid,
@@ -501,9 +333,8 @@ def main():
                         "ai_model": model,
                         "context_level": 3,
                         "context_variant": vi,
-                        "context_factors_used": json.dumps(top5, ensure_ascii=False),
-                        "final_prompt": f"{sentence} {question}".strip(),
-                        "deduped_context": deduped_flag,
+                        "context_factors_used": json.dumps(top5[:3], ensure_ascii=False),
+                        "final_prompt": f"{context_text} {question}".strip(),
                     })
 
                 # L5
@@ -511,13 +342,9 @@ def main():
                 if cache_key_l5 not in VARIANT_CACHE:
                     VARIANT_CACHE[cache_key_l5] = build_level5_variants_with_llm(theme, rank_key, top5, factor_to_clause)
                 varset_l5 = VARIANT_CACHE[cache_key_l5]
-
-                orig_l5_map = {tuple(item["clauses"]): item.get("sentence","") for item in varset_l5.get("level5", [])}
-                lvl5_items = dedupe_variant_objects(varset_l5.get("level5", []), need=5, k=5, pool=pool)
+                lvl5_items = varset_l5.get("level5", [])
                 for vi, item in enumerate(lvl5_items, start=1):
-                    t = tuple(item["clauses"])
-                    deduped_flag = "llm" if t in orig_l5_map else "deduped"
-                    sentence = item["sentence"] or join_clauses([c.rstrip(".") for c in item["clauses"]])
+                    context_text = item["context_text"] or join_clauses([c.rstrip(".") for c in item["clauses"]])
                     pid = f"{request_id}_ai-{model}_{level_val}_{prof_uid}_5_v{vi}"
                     rows.append({
                         "prompt_id": pid,
@@ -531,8 +358,7 @@ def main():
                         "context_level": 5,
                         "context_variant": vi,
                         "context_factors_used": json.dumps(top5, ensure_ascii=False),
-                        "final_prompt": f"{sentence} {question}".strip(),
-                        "deduped_context": deduped_flag,
+                        "final_prompt": f"{context_text} {question}".strip(),
                     })
 
     out_df = pd.DataFrame(rows, columns=OUTPUT_COLUMNS)

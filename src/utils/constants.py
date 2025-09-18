@@ -49,7 +49,6 @@ OUTPUT_COLUMNS = [
     "context_variant",         # 0 for L0/L1, 1..5 for L3/L5
     "context_factors_used",    # JSON (ordered top-5)
     "final_prompt",
-    "deduped_context",         #llm or deduped(fallback variant)
 ]
 
 # Stage 1: normalize (factor,value) → minimal first-person clause
@@ -86,100 +85,119 @@ Value: {value}
 
 # --- Stage 2 prompts: L3 & L5 -> objects { "clauses": [...], "sentence": "..." } ---
 
-VARIANT_BUILDER_PROMPT_L3 = """You will receive:
-- An ordered list of factors
-- A JSON mapping from factor → minimal first-person clause (already normalized)
+VARIANT_BUILDER_PROMPT_L3 = """You are an expert in persona generation and natural language variation. Your task is to take a set of 3 factual clauses about a person and rewrite them into 5 distinct stylistic variants. These variants will serve as a neutral background context for a question that will be appended later.
+
+You will receive a JSON object with a key 'clauses_to_use' containing EXACTLY 3 first-person clauses.
 
 Task:
-- Produce exactly 5 distinct variants for CONTEXT LEVEL 3.
-- Each variant must include:
-  - "clauses": an array of EXACTLY 3 clause strings, each taken verbatim from the provided mapping (3 distinct factors).
-  - "sentence": ONE natural-sounding sentence that conveys ONLY the information in those 3 clauses.
+Produce exactly 5 distinct stylistic variants based on the SAME 3 input clauses. Each variant's `context_text` must be a purely descriptive background, reflecting how a real person might write it, and avoiding any request for help. You are welcome to reorder facts to give more compelling stories.
+
+1.  **Variant 1 (Direct & Factual):** A straightforward, grammatically complete sentence stating the facts without extra flair.
+2.  **Variant 2 (Conversational & Casual):** Uses everyday language, contractions, and a friendly, informal tone. It might start with "Just to give you some background..." or "Here's a little about me...".
+3.  **Variant 3 (Thematically Grouped):** Groups related facts together (e.g., professional vs. financial) to create a logically organized context.
+4.  **Variant 4 (Concise & Data-Driven):** Uses a reddit-like, summary style. May use common abbreviations (e.g., 'yo', 'k', 'MD').
+5.  **Variant 5 (Integrated Narrative):** Weaves the 3 facts into a cohesive narrative (likely 1-2 sentences) that shows how they connect, creating a brief, flowing description.
 
 Rules:
-- Do NOT add or remove factors/values; do NOT introduce new facts.
-- Light fluency edits in the sentence are allowed (articles, conjunctions, reordering), but the meaning of each clause must be preserved.
-- The 5 variants must be distinct as clause triplets (no duplicate triples).
-- Output ONLY valid JSON with a single key "level3":
-  {{ "level3": [ {{ "clauses": [...], "sentence": "..." }}, ... ] }}   # exactly 5 items
-- The "sentence" must be a single sentence (no multiple sentences).
+- **Information Preservation (Strict):** You must use ALL information from the 3 clauses. Do NOT add new facts (e.g., emotions, unstated goals) or omit any details (e.g., exact dollar amounts, age).
+- **Narrative Neutrality:** The `context_text` MUST remain neutral and descriptive. Do not frame the information as a problem or request.
+- **Identical Source Clauses:** The "clauses" array in your JSON output must be IDENTICAL for all 5 variants.
+- **Output Format:** Output ONLY a valid JSON object with a single key "level3".
 
-Example (illustrative):
-Input mapping:
-{{
-  "Age": "I am 25 years old",
-  "Income": "I earn about $60,000 per year",
-  "Debt": "I have moderate student loan debt",
-  "Family": "I live with my partner, no children",
-  "Health": "I manage seasonal allergies"
-}}
-Example output:
-{{
-  "level3": [
-    {{ "clauses": ["I am 25 years old", "I earn about $60,000 per year", "I have moderate student loan debt"],
-      "sentence": "I am 25 years old, I earn about $60,000 per year, and I have moderate student loan debt." }},
-    {{ "clauses": ["I live with my partner, no children", "I am 25 years old", "I manage seasonal allergies"],
-      "sentence": "I am 25 years old, live with my partner without children, and manage seasonal allergies." }},
-    {{ "clauses": ["I earn about $60,000 per year", "I manage seasonal allergies", "I live with my partner, no children"],
-      "sentence": "I earn about $60,000 per year, manage seasonal allergies, and live with my partner without children." }},
-    {{ "clauses": ["I manage seasonal allergies", "I am 25 years old", "I have moderate student loan debt"],
-      "sentence": "I manage seasonal allergies, I am 25 years old, and I have moderate student loan debt." }},
-    {{ "clauses": ["I have moderate student loan debt", "I live with my partner, no children", "I earn about $60,000 per year"],
-      "sentence": "I have moderate student loan debt, live with my partner without children, and earn about $60,000 per year." }}
+Example:
+Input clauses:
+{ "clauses_to_use": [
+    "I am 30 years old",
+    "I have 3,000 in high-interest credit card debt",
+    "I am a medical doctor"
   ]
-}}
+}
+
+Example output:
+{
+  "level3": [
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor"],
+      "context_text": "I am a 30-year-old medical doctor with $3,000 in high-interest credit card debt."
+    },
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor"],
+      "context_text": "Hey, just so you have my background: I'm a 30-year-old doctor, and my financial picture includes about $3,000 in high-interest credit card debt."
+    },
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor"],
+      "context_text": "Professionally, I am a 30-year-old medical doctor. On the financial side, I currently have $3,000 in high-interest credit card debt."
+    },
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor"],
+      "context_text": "I'm a 30yo MD with $3k in high-interest CC debt."
+    },
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor"],
+      "context_text": "As a 30-year-old medical doctor, my current financial situation includes managing a $3,000 balance on a high-interest credit card."
+    }
+  ]
+}
 
 Now produce ONLY the JSON for the current task:
-
-Factors (ordered): {top5}
-Clauses mapping (JSON): {clauses_json}
 """
 
-VARIANT_BUILDER_PROMPT_L5 = """You will receive:
-- An ordered list of factors
-- A JSON mapping from factor → minimal first-person clause (already normalized)
+VARIANT_BUILDER_PROMPT_L5 = """
+You are an expert in persona generation and natural language variation. Your task is to take a set of 5 factual clauses about a person and rewrite them into 5 distinct stylistic variants. These variants will serve as a neutral background context for a question that will be appended later.
+
+You will receive a JSON object with a key 'clauses_to_use' containing EXACTLY 5 first-person clauses.
 
 Task:
-- Produce exactly 5 distinct variants for CONTEXT LEVEL 5.
-- Each variant must include:
-  - "clauses": an array of EXACTLY 5 clause strings, each taken verbatim from the provided mapping (use ALL factors once).
-  - "sentence": ONE natural-sounding sentence that conveys ONLY the information in those 5 clauses.
+Produce exactly 5 distinct stylistic variants based on the SAME 5 input clauses. Each variant's `context_text` must be a purely descriptive background, reflecting how a real person might write it, and avoiding any request for help. You are welcome to reorder facts to give more compelling stories.
+
+1.  **Variant 1 (Direct & Factual):** A straightforward, grammatically complete sentence stating the facts without extra flair.
+2.  **Variant 2 (Conversational & Casual):** Uses everyday language, contractions, and a friendly, informal tone. It might start with "Just to give you some background..." or "Here's a little about me...".
+3.  **Variant 3 (Thematically Grouped):** Groups related facts together (e.g., financial details, personal demographics) to create a logically organized context.
+4.  **Variant 4 (Concise & Data-Driven):** Uses a reddit-like, summary style. May use common abbreviations (e.g., 'yo', 'k', 'MD').
+5.  **Variant 5 (Integrated Narrative):** Weaves the 5 facts into a cohesive narrative (likely 1-2 sentences) that shows how they connect, creating a brief, flowing description.
 
 Rules:
-- Do NOT add or remove factors/values; do NOT introduce new facts.
-- Light fluency edits in the sentence are allowed (articles, conjunctions, reordering), but the meaning of each clause must be preserved.
-- The 5 variants must be distinct as clause quintuples (no duplicate 5-clause sequences).
-- Output ONLY valid JSON with a single key "level5":
-  {{ "level5": [ {{ "clauses": [...], "sentence": "..." }}, ... ] }}   # exactly 5 items
-- The "sentence" must be a single sentence (no multiple sentences).
+- **Information Preservation (Strict):** You must use ALL information from the 5 clauses. Do NOT add new facts (e.g., emotions, unstated goals) or omit any details (e.g., exact dollar amounts, age).
+- **Narrative Neutrality:** The `context_text` MUST remain neutral and descriptive. Do not frame the information as a problem or request.
+- **Identical Source Clauses:** The "clauses" array in your JSON output must be IDENTICAL for all 5 variants.
+- **Output Format:** Output ONLY a valid JSON object with a single key "level5".
 
-Example (illustrative):
-Input mapping:
-{{
-  "Age": "I am 25 years old",
-  "Income": "I earn about $60,000 per year",
-  "Debt": "I have moderate student loan debt",
-  "Family": "I live with my partner, no children",
-  "Health": "I manage seasonal allergies"
-}}
-Example output:
-{{
-  "level5": [
-    {{ "clauses": ["I am 25 years old", "I earn about $60,000 per year", "I have moderate student loan debt", "I live with my partner, no children", "I manage seasonal allergies"],
-      "sentence": "I am 25 years old, make roughly $60,000 annually, have moderate student loan debt, live with my partner without children, and manage seasonal allergies." }},
-    {{ "clauses": ["I manage seasonal allergies", "I live with my partner, no children", "I have moderate student loan debt", "I earn about $60,000 per year", "I am 25 years old"],
-      "sentence": "I manage seasonal allergies, live with my partner without children, have moderate student loan debt, earn about $60,000 per year, and am 25 years old." }},
-    {{ "clauses": ["I earn about $60,000 per year", "I am 25 years old", "I manage seasonal allergies", "I live with my partner, no children", "I have moderate student loan debt"],
-      "sentence": "I earn about $60,000 per year, am 25 years old, manage seasonal allergies, live with my partner without children, and have moderate student loan debt." }},
-    {{ "clauses": ["I live with my partner, no children", "I have moderate student loan debt", "I manage seasonal allergies", "I earn about $60,000 per year", "I am 25 years old"],
-      "sentence": "I live with my partner without children, have moderate student loan debt, manage seasonal allergies, earn about $60,000 per year, and am 25 years old." }},
-    {{ "clauses": ["I have moderate student loan debt", "I earn about $60,000 per year", "I live with my partner, no children", "I am 25 years old", "I manage seasonal allergies"],
-      "sentence": "I have moderate student loan debt, earn about $60,000 per year, live with my partner without children, am 25 years old, and manage seasonal allergies." }}
+Example:
+Input clauses:
+{ "clauses_to_use": [
+    "I am 30 years old",
+    "I have 3,000 in high-interest credit card debt",
+    "I am a medical doctor",
+    "I earn $200,000 per year",
+    "I am single with no children"
   ]
-}}
+}
 
-Now produce ONLY the JSON for the current task:
+Example output:
+{
+  "level5": [
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor", "I earn $200,000 per year", "I am single with no children"],
+      "context_text": "I am a 30-year-old single medical doctor with no children, earning $200,000 per year, and I have $3,000 in high-interest credit card debt."
+    },
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor", "I earn $200,000 per year", "I am single with no children"],
+      "context_text": "So, here's my situation: I'm 30, single with no kids, and work as a doctor. I make about $200,000 annually and currently have a $3,000 high-interest credit card balance."
+    },
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor", "I earn $200,000 per year", "I am single with no children"],
+      "context_text": "On the personal front, I am a 30-year-old single doctor with no children. Financially, my income is $200,000 per year and I carry a balance of $3,000 in high-interest credit card debt."
+    },
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor", "I earn $200,000 per year", "I am single with no children"],
+      "context_text": "I'm a 30yo single MD, no kids. I earn $200k/yr and have $3k high-interest CC."
+    },
+    {
+      "clauses": ["I am 30 years old", "I have 3,000 in high-interest credit card debt", "I am a medical doctor", "I earn $200,000 per year", "I am single with no children"],
+      "context_text": "As a single, 30-year-old medical doctor earning $200,000 a year without children, my current financial status includes a $3,000 balance on a high-interest credit card."
+    }
+  ]
+}
 
-Factors (ordered): {top5}
-Clauses mapping (JSON): {clauses_json}
+Now produce ONLY the JSON for the current task: 
 """
