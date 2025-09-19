@@ -2,7 +2,7 @@
 
 import pandas as pd
 from src.logger import log, log_file
-from src.utils import get_models_for_row, call_model_api
+from utils_pipeline import get_models_for_row, call_model_api
 from src.config import DEFAULT_INPUT_CSV, DEFAULT_OUTPUT_CSV
 
 def main():
