@@ -2502,3 +2502,1327 @@ Before you think about buying a house in San Francisco, you should:
 3.  **Thoroughly research** first-time homebuyer programs and more affordable locations in the wider Bay Area.
 
 You are in a great financial position for your age, but the San Francisco real estate market operates on a different planet. Use this information to create a realistic, long-term plan that aligns with your career and life goals."
+f35_relevance_low_f3-l1_5_v1,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,openai/gpt-5,"I earn approximately $115,000 annually from a stable job. My financial situation includes around $10,000 remaining in low-interest student loans, as well as $85,000 in savings and retirement funds, along with some stock investments. I am single, without children or dependents, and I live in San Francisco, an urban city in the United States. How much should I have saved up before even thinking about buying a house?","Short answer: In San Francisco on a $115k income, you generally want a very large cash cushion before seriously considering a purchase—think roughly 25–30% of the home price plus 6–12 months of housing payments, in liquid (non-retirement) funds. For typical SF prices ($800k–$1.2M), that’s about $230k–$400k+.
+
+Why that much
+- Down payment: 10–20%+ (20% avoids PMI).
+- Closing costs and prepaids: ~2–4% of price.
+- Move-in, inspections, immediate repairs: ~1% of price (or at least $5k–$10k).
+- Reserves: 6–12 months of PITI (principal, interest, taxes, insurance, and HOA if any). Lenders often require 2–6 months; in a high-cost market it’s wise to have more.
+
+Reality check with your income
+- Using the common 28/36 rule, your target housing payment (PITI) is about 28% of gross income: ~$2,700/month.
+- At today’s rates, $2,700/month supports a loan around $180k–$220k after accounting for SF property taxes/insurance—and that implies a total home price in the ~$250k–$350k range with 20% down. That price point is rare in SF’s open market.
+- Conclusion: To buy market-rate in SF on your income alone, you’d need a very large down payment (hundreds of thousands), a co-borrower, a special program, or a different market.
+
+What this looks like in dollars
+- Example A: $900k condo
+  - 20% down: $180k
+  - Closing/prepaids (3%): ~$27k
+  - Move-in/repairs (1%): ~$9k
+  - 6 months PITI reserves: ~$35k–$50k
+  - Total cash to have: ~$250k–$300k+
+  - Note: The monthly payment likely exceeds what you’d qualify for on $115k unless the down payment is much larger.
+
+- Example B: $1.2M home
+  - 20% down: $240k
+  - Closing/prepaids (3%): ~$36k
+  - Move-in/repairs (1%): ~$12k
+  - 6 months PITI reserves: ~$45k–$60k
+  - Total cash to have: ~$330k–$400k+
+  - Again, monthly payment would far exceed typical approval ratios without a massive down payment.
+
+How your current savings fit
+- You mentioned ~$85k across savings/retirement/stocks. Lenders and good planning focus on liquid, non-retirement funds. Try not to count retirement accounts toward your down payment (except possibly Roth IRA contributions), and keep a separate 3–6 months of living expenses emergency fund intact.
+
+Ways to bridge the gap
+- Increase down payment over time; target a specific price and save toward ~25–35% of that number plus reserves.
+- Consider SF programs: MOHCD Below Market Rate (BMR) units and the Downpayment Assistance Loan Program (DALP). Your income may be within some program limits for a 1-person household.
+- Add a co-borrower to raise qualifying income.
+- Look at nearby, lower-cost markets or smaller condos/TICs; or house-hack a multi-unit where rental income can count toward DTI.
+- Wait for income growth or a drop in rates/prices.
+
+Quick worksheet you can use
+Savings target = Down payment (%) x Price + 3% closing + 1% move/repairs + 6–12 months of PITI reserves.
+If you share a target price and how much of the $85k is liquid vs. retirement, I can run exact numbers and tell you what a lender would likely require.
+
+Note on student loans
+Your remaining $10k at low interest isn’t urgent to pay off before buying. Keeping cash for down payment/reserves is usually more valuable, though eliminating the monthly payment can help your debt-to-income if you’re on the edge."
+f35_relevance_low_f3-l1_5_v2,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,anthropic/claude-sonnet-4,"Just to give you some background, I make around $115,000 a year from a secure job. I've got about $10,000 left in student loans at a low interest rate, and I’ve saved up around $85,000 in savings and retirement, plus I have some stock investments. I'm single, no kids or dependents, and I live in San Francisco. How much should I have saved up before even thinking about buying a house?","Given your San Francisco location, you'll need substantially more savings than in most markets. Here's what to consider:
+
+**Down Payment Reality:**
+- SF median home price is around $1.3-1.5M
+- Even a modest SF home/condo might be $800K-1M+
+- You'll want 10-20% down ($80K-300K depending on property)
+- Less than 20% down means PMI, which is expensive on high-value homes
+
+**Additional Costs:**
+- Closing costs: 2-3% of purchase price ($16K-45K)
+- Emergency fund: 3-6 months expenses (~$15K-30K)
+- Moving/immediate repairs: $5K-15K
+
+**Your Current Position:**
+With $85K saved and $115K income, you're actually doing well for your income level, but SF real estate requires different math. You'd likely need:
+
+- **Minimum**: $150K-200K total savings for a lower-end property
+- **Comfortable**: $250K-350K for more options and financial cushion
+
+**Recommendations:**
+1. Keep saving aggressively - maybe 30-40% of income
+2. Consider starting with a condo rather than house
+3. Look at up-and-coming neighborhoods
+4. Don't rush - SF market can be volatile
+5. Factor in property taxes (~1.2%) and HOA fees
+
+You're maybe 2-4 years away depending on how aggressively you save and what type of property you target."
+f35_relevance_low_f3-l1_5_v2,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,google/gemini-2.5-pro,"Just to give you some background, I make around $115,000 a year from a secure job. I've got about $10,000 left in student loans at a low interest rate, and I’ve saved up around $85,000 in savings and retirement, plus I have some stock investments. I'm single, no kids or dependents, and I live in San Francisco. How much should I have saved up before even thinking about buying a house?","This is an excellent question, and it’s incredibly wise of you to be thinking this through with so much detail. Your financial situation is strong: a good income, a solid savings habit, and manageable debt. That's a fantastic foundation.
+
+However, as you know, San Francisco is one of the most expensive and competitive real estate markets in the world. Let's break down exactly what you'd need to have saved up.
+
+The total amount you need isn't just one number; it's a combination of three critical buckets of cash.
+
+### 1. The Down Payment
+
+This is the largest and most well-known expense. While you *can* buy a home with less, the gold standard is a **20% down payment**.
+
+*   **Why 20%?** It allows you to avoid Private Mortgage Insurance (PMI), a costly extra monthly fee that protects the lender, not you. It also makes your offer more competitive and results in a lower monthly mortgage payment.
+*   **The SF Numbers:**
+    *   **Starter Condo:** A one-bedroom condo in a less-central neighborhood might start around **$700,000 - $850,000**.
+    *   **""Median"" Property:** The median price for all homes (including single-family) in SF is often well over **$1.3 million**, which is likely out of reach for now.
+
+Let’s use a starter condo as a realistic goal:
+
+| Purchase Price | 20% Down Payment |
+| :--- | :--- |
+| **$750,000** | **$150,000** |
+| **$850,000** | **$170,000** |
+
+As you can see, your current $85,000 in savings and investments would not be enough to cover a 20% down payment on a typical SF property.
+
+### 2. Closing Costs
+
+This is the sneaky cost that catches many first-time buyers by surprise. These are fees for services required to close the deal. A safe estimate for closing costs in California is **2% to 3% of the purchase price**.
+
+Using our $750,000 condo example:
+
+*   **Estimated Closing Costs (2.5%):** $750,000 x 0.025 = **$18,750**
+
+These costs cover things like lender fees, title insurance, escrow fees, appraisal, and more. This money is due at closing, on top of your down payment.
+
+### 3. Cash Reserves & Buffers (The ""Don't Go Broke"" Fund)
+
+After you’ve paid your down payment and closing costs, you must have a significant amount of cash left over. A lender will want to see this, and for your own peace of mind, it’s non-negotiable.
+
+This buffer should be composed of three parts:
+
+1.  **Post-Closing Emergency Fund:** 3-6 months of your *new* total living expenses. This includes your mortgage, property taxes, insurance, HOA fees, utilities, food, etc. A new mortgage payment in SF could easily be $5,000-$6,000/month, so a safe emergency fund would be **$25,000 - $35,000**.
+2.  **Immediate Repair/Maintenance Fund:** Homes, even new condos, have unexpected costs. The water heater could fail, the dishwasher could leak, or you might discover an issue the inspector missed. A good rule of thumb is to have **1% of the home's value** set aside for this. For a $750,000 condo, that’s **$7,500**.
+3.  **Moving & Furnishing Costs:** Don't forget the cost of movers, new furniture, paint, and setting up your new life. This can easily be **$5,000 - $15,000**.
+
+### Putting It All Together: Your Target Savings Goal
+
+Let's use the example of buying an **$750,000 starter condo** in San Francisco.
+
+| Item | Estimated Cost |
+| :--- | :--- |
+| 20% Down Payment | $150,000 |
+| Closing Costs (~2.5%) | $18,750 |
+| Emergency Fund (post-closing) | $30,000 |
+| Repair & Maintenance Fund | $7,500 |
+| Moving & Furnishing | $10,000 |
+| **Total Savings Needed Before Buying** | **$216,250** |
+
+**Conclusion:** To comfortably and safely begin the home-buying process in San Francisco, a realistic savings target would be in the **$200,000 to $250,000 range.**
+
+### The Affordability Reality Check
+
+Beyond savings, you need to be able to afford the monthly payment. Lenders use a Debt-to-Income (DTI) ratio. A common rule is the **28/36 rule**: your housing costs (PITI + HOA) shouldn't exceed 28% of your gross monthly income, and your total debt payments shouldn't exceed 36%.
+
+*   **Your Gross Monthly Income:** $115,000 / 12 = ~$9,583
+*   **Max Housing Payment (28%):** $9,583 x 0.28 = **$2,683/month**
+
+Let's see what the payment on that $750,000 condo looks like:
+*   Purchase Price: $750,000
+*   Down Payment (20%): $150,000
+*   Loan Amount: $600,000
+*   Interest Rate (example): 7.0%
+---
+*   **Principal & Interest:** ~$3,992
+*   **Property Tax (~1.25% annually):** ~$781
+*   **Homeowner's Insurance:** ~$80
+*   **HOA Fees (can be high in SF):** ~$550
+---
+*   **Total Estimated Monthly Payment:** **~$5,403**
+
+This estimated monthly payment of **$5,403 is more than double** the conservative $2,683 limit. A lender might stretch to a 43% DTI, but even that would be a challenge. This indicates that on a single $115k income, even a starter condo in SF is a significant financial stretch.
+
+### Recommendations & Next Steps
+
+1.  **Keep Saving Aggressively:** You're doing great, but the SF bar is high. Your target should be north of $200,000 in liquid savings (not including retirement).
+2.  **Focus on Increasing Income:** Your income is the biggest limiting factor for the monthly payment. A significant salary increase or a partner's income would dramatically change your affordability.
+3.  **Consider a Tenancy in Common (TIC):** This is a popular SF-specific option where you buy a share in a building with others. It's often a more affordable entry point than a condo, but comes with its own complexities.
+4.  **Explore Broader Bay Area:** Consider commuting from more affordable areas like Oakland, Daly City, or other East Bay locations where your money will go much further.
+5.  **Pay Off Student Loans:** While the rate is low, having zero non-mortgage debt will help your DTI ratio when you apply for a loan. With your savings, you could wipe this out easily, but holding off for now while you save for a down payment is also a valid strategy.
+
+**Bottom Line:** Before you even *think* about seriously house hunting in San Francisco, aim to have **at least $200,000** saved in a combination of cash and non-retirement investments. You are on the right path, but the journey to homeownership in SF is a marathon, not a sprint."
+f35_relevance_low_f3-l1_5_v2,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,openai/gpt-5,"Just to give you some background, I make around $115,000 a year from a secure job. I've got about $10,000 left in student loans at a low interest rate, and I’ve saved up around $85,000 in savings and retirement, plus I have some stock investments. I'm single, no kids or dependents, and I live in San Francisco. How much should I have saved up before even thinking about buying a house?","Short answer: in San Francisco, you’ll generally want low-to-mid six figures in liquid cash before it makes sense to buy. For most single buyers on your income, a realistic target is $200k–$300k cash if you want to buy in SF proper without straining your budget. Here’s why and how to size it for you.
+
+What you should have saved before you buy
+- Down payment: 10% minimum; 20% is ideal to avoid PMI and get better rates.
+- Closing costs: typically 2–3% of the purchase price (SF transfer tax is usually paid by the seller, but not always).
+- Reserves/emergency fund: at least 6 months of total expenses, and lenders often require 2–6 months of PITI (principal, interest, taxes, insurance, plus HOA if any). Keep this separate from your down payment.
+- Move-in/repairs: plan 1% of purchase price (or at least $5k–$10k).
+
+How that looks in SF numbers
+- Your income: $115k ≈ $9,600/month gross. A comfortable housing payment is ~28–35% of gross, or roughly $2,700–$3,300/month. Many SF homes will exceed that unless you put a large down payment or buy below city median prices.
+- Property tax: roughly 1.2%/year of assessed value.
+- HOA (condos): often $300–$900+/month.
+
+Cash targets by example
+- $700k condo
+  - 20% down: $140k
+  - Closing (2.5%): ~$17.5k
+  - Reserves (6 months of PITI+HOA, likely ~$4.8k/mo): ~$29k
+  - Move-in: ~$5k
+  - Total cash to be ready: about $190k–$200k
+  - Note: Monthly cost likely around $4.5k–$5k, which is high vs your income.
+
+- $900k condo
+  - 20% down: $180k
+  - Closing (2.5%): ~$22.5k
+  - Reserves (6 months of PITI+HOA, likely ~$6k+): ~$36k–$40k
+  - Move-in: ~$5k–$10k
+  - Total cash to be ready: about $245k–$260k+
+
+Minimum viable path (not recommended unless your budget is very tight and you’re comfortable with higher monthly costs)
+- 10% down on a $600k place:
+  - Down: $60k
+  - Closing: ~$12k–$15k
+  - Reserves: ~$18k–$24k
+  - Move-in: ~$5k
+  - Total cash: ~$95k–$105k
+  - But monthly payment likely ~ $4k+, which would push your debt-to-income high for your salary.
+
+Given your profile
+- You have ~$85k across savings and retirement. If much of that is retirement, your liquid cash is likely well below what you’d want for SF. I would not count retirement funds toward your down payment unless you have a specific plan (and even then, it’s usually better not to tap them).
+- Your $10k student loan at a low rate doesn’t need to be paid off before buying; liquidity matters more for a purchase.
+
+Practical guidance
+- If buying in SF proper: aim for $200k–$300k in liquid cash to be competitive and keep risk reasonable. This assumes targeting a $700k–$1M condo/TIC. Even then, check that the resulting monthly payment stays under ~35% of your gross income.
+- If you can look just outside SF (parts of the East Bay, Daly City, etc.): you might make it work with ~$100k–$150k liquid, depending on price and HOA.
+- Keep at least 6 months of living expenses in cash after closing.
+- Try to keep your projected housing payment at or below $3k–$3.5k/month on your income, unless you have strong reasons to stretch.
+
+If you want, share:
+- How much of the $85k is truly liquid vs. retirement.
+- Your credit score and monthly debt payments.
+- Target neighborhoods/property type and rough budget.
+With that, I can give you a precise savings target and an estimated monthly payment you can compare to your comfort zone."
+f35_relevance_low_f3-l1_5_v3,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,anthropic/claude-sonnet-4,"In terms of my professional life, I earn about $115,000 a year from a stable job. Financially, I have $85,000 in savings and retirement funds, along with some stock investments, and I still owe $10,000 in low-interest student loans. Personally, I am single, without children or dependents, and I reside in San Francisco, an urban city in the United States. How much should I have saved up before even thinking about buying a house?","Given your location in San Francisco, you'll need substantially more savings than in most other markets. Here's what you should target:
+
+## Down Payment
+- **Minimum**: $120,000-150,000 (10-15% down on a $1.2-1.5M median home)
+- **Ideal**: $200,000-300,000 (20% down to avoid PMI)
+
+## Additional Costs
+- **Closing costs**: $25,000-40,000 (2-3% of purchase price)
+- **Emergency fund**: $30,000-45,000 (6 months of SF living expenses)
+- **Moving/initial setup**: $5,000-10,000
+
+## Total Target: $180,000-395,000
+
+## Your Current Situation Analysis
+With $85,000 saved and a $115,000 salary, you're not quite ready for SF's market yet. Consider:
+
+**Accelerate savings by:**
+- Maximizing your income potential in SF's high-paying market
+- Aggressive saving (aim for 30-40% savings rate)
+- Growing your stock investments
+
+**Alternative strategies:**
+- Look at condos or smaller units ($800K-1.2M range)
+- Consider areas like Oakland, Daly City, or South Bay
+- Explore first-time buyer programs (some allow 3-5% down)
+- House hacking with a duplex/roommates
+
+**Timeline**: At your current income, you'd likely need 2-4 more years of aggressive saving to be comfortably positioned for SF homeownership, unless you increase your income significantly or adjust location/property type expectations."
+f35_relevance_low_f3-l1_5_v3,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,google/gemini-2.5-pro,"In terms of my professional life, I earn about $115,000 a year from a stable job. Financially, I have $85,000 in savings and retirement funds, along with some stock investments, and I still owe $10,000 in low-interest student loans. Personally, I am single, without children or dependents, and I reside in San Francisco, an urban city in the United States. How much should I have saved up before even thinking about buying a house?","Of course. This is an excellent and crucial question to ask, especially given your location. Let's break down the answer by looking at the key financial components of home buying in a high-cost-of-living area like San Francisco.
+
+The short answer is that for a starter home (likely a condo) in San Francisco, you should aim to have **between $200,000 and $300,000** in liquid savings *before* you seriously start the buying process.
+
+Here’s the detailed breakdown of why and how we get to that number.
+
+### 1. The San Francisco Reality Check
+
+The single most important factor here is your location. The median price for a single-family home in San Francisco is consistently over $1.5 million, and a starter 1-bedroom condo often starts in the **$800,000 to $1,000,000** range. This drastically changes the savings calculation compared to almost anywhere else in the country.
+
+We'll use a conservative **$850,000 purchase price for a condo** for our calculations.
+
+### The Three Critical Savings Buckets
+
+Before buying a house, you don't just need a down payment. You need three distinct pools of money ready to go. A critical point for you is that **your retirement funds should not be counted in this calculation.** Money in a 401(k) or IRA is for your future and comes with significant taxes and penalties if withdrawn early. It's for retirement, not real estate.
+
+So, let's look at your **liquid savings** (cash, non-retirement brokerage accounts) and see what you need.
+
+---
+
+#### Bucket 1: The Down Payment
+
+This is the largest and most well-known cost. While some loans allow for as little as 3-5% down, there are huge advantages to putting down 20%.
+
+*   **The 20% Standard:** In a competitive market like SF, a 20% down payment makes your offer much stronger. It also allows you to avoid Private Mortgage Insurance (PMI), which protects the lender (not you) and can add hundreds of dollars to your monthly payment.
+
+> **Calculation:** 20% of $850,000 = **$170,000**
+
+---
+
+#### Bucket 2: Closing Costs & Immediate Expenses
+
+People often forget this bucket. Closing costs are fees for services that finalize the real estate transaction. They typically range from 2-5% of the purchase price.
+
+*   **Closing Costs:** Includes lender fees, title insurance, appraisal, escrow fees, property taxes, etc. Let's estimate on the low end at 3%.
+*   **Immediate Expenses:** This includes moving costs, any immediate repairs or cosmetic updates the new place might need, and essential furniture. It's wise to budget at least $10,000 - $20,000 for this.
+
+> **Calculation:** 3% of $850,000 = $25,500 (Closing Costs) + $15,000 (Moving/Furnishing) = **$40,500**
+
+---
+
+#### Bucket 3: The Post-Purchase Emergency Fund
+
+This is the most crucial, non-negotiable bucket. After you've depleted your savings for the down payment and closing costs, you cannot be left with zero. As a homeowner, you are your own landlord. If the water heater breaks or the roof leaks, it's on you.
+
+*   Your emergency fund should cover **6 months of ALL your living expenses**, including your new, higher housing payment (PITI: Principal, Interest, Taxes, Insurance).
+
+> **Calculation:**
+> *   Loan Amount: $850,000 (price) - $170,000 (down payment) = $680,000
+> *   **Principal & Interest:** On a $680k loan at ~6.5% interest, this is roughly **$4,300/month**.
+> *   **Property Tax:** SF property tax is ~1.18%. On an $850k home, that's ~$10,030/year or **$835/month**.
+> *   **Homeowners Insurance & HOA:** Let's estimate a combined **$600/month** (HOA fees for condos can be high).
+>
+> Your estimated monthly PITI + HOA would be: $4,300 + $835 + $600 = **$5,735**.
+>
+> Add your other living expenses (food, transport, utilities, fun): Let's estimate $2,000/month.
+> Your total monthly expenses would be ~$7,735.
+>
+> **6-Month Emergency Fund:** 6 x $7,735 = **$46,410**
+
+---
+
+### Total Savings Goal Before You Buy
+
+Let's add it all up:
+
+*   **Down Payment:** $170,000
+*   **Closing & Moving:** $40,500
+*   **Emergency Fund:** $46,410
+*   **TOTAL LIQUID SAVINGS NEEDED:** **~$257,000**
+
+### Assessing Your Current Situation & A Red Flag
+
+*   **Your Savings:** You have $85,000 in total savings and investments. You need to determine how much of this is liquid (cash, stocks you can sell) vs. how much is in dedicated retirement accounts that you should not touch. If half is in retirement, you have about **$42,500** in accessible funds. This is a fantastic start, but as you can see, there's a significant gap to reach the ~$257k target.
+*   **Your Debt:** The $10,000 student loan is not a major obstacle. Since it's low-interest, it doesn't hurt your finances much and you can continue paying it on schedule.
+*   **A Major Red Flag: Debt-to-Income Ratio (DTI):** Lenders look very closely at your DTI. This is your total monthly debt payments divided by your gross monthly income.
+    *   Your Gross Monthly Income: $115,000 / 12 = **$9,583**
+    *   Your Estimated Monthly Housing Payment: **$5,735**
+    *   Your Student Loan Payment (estimated): **$200**
+    *   Total Monthly Debt: $5,735 + $200 = **$5,935**
+    *   **Your DTI:** $5,935 / $9,583 = **62%**
+
+Lenders typically want your DTI to be **below 43%**. At 62%, you would not be approved for a mortgage of this size on your current income, even if you had the down payment. This is the financial reality of buying solo in an extreme market.
+
+### Recommendations and Actionable Next Steps
+
+1.  **Don't Be Discouraged, Be Informed:** You now have a realistic target. The numbers are daunting, but you are in a strong position with a stable, high income and no dependents.
+2.  **Separate Your Funds:** Your first step is to get clarity. How much of your $85k is in liquid accounts vs. retirement accounts? This will tell you your true starting point.
+3.  **Focus on the DTI Problem:** The DTI is a bigger hurdle than the down payment. To buy in SF, you would likely need to:
+    *   **Significantly Increase Your Income:** Aiming for a promotion, changing jobs, or developing a side income.
+    *   **Buy with a Partner:** This is the most common way people afford homes in the Bay Area.
+    *   **Look at a Lower Price Point:** This means looking at smaller units, or more pressingly, exploring more affordable areas (e.g., East Bay cities like Oakland or Concord, or parts of the Peninsula).
+4.  **Create an Aggressive Savings Plan:** Figure out how much you can put away each month specifically for your ""Home Buying Fund."" With your income and single status, you could potentially save a significant amount.
+5.  **Keep the Student Loan:** For now, the low interest rate means that money is better used for saving/investing than for aggressively paying down that specific debt.
+
+**Conclusion:** Based on the realities of the San Francisco market, you are not ready to buy a house today. You should focus on aggressively growing your liquid savings to a target of **at least $250,000** while simultaneously looking for ways to increase your income to solve the DTI challenge."
+f35_relevance_low_f3-l1_5_v3,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,openai/gpt-5,"In terms of my professional life, I earn about $115,000 a year from a stable job. Financially, I have $85,000 in savings and retirement funds, along with some stock investments, and I still owe $10,000 in low-interest student loans. Personally, I am single, without children or dependents, and I reside in San Francisco, an urban city in the United States. How much should I have saved up before even thinking about buying a house?","Short answer: Aim to have roughly 25–30% of your target home price in readily available cash before shopping seriously, plus a separate 6-month emergency fund you won’t touch.
+
+What that 25–30% covers
+- Down payment: 10–20% (20% avoids PMI and is safer in a high-cost market)
+- Closing and move-in costs: 2–4% (escrow, title, prepaid taxes/insurance, inspection, appraisal, moving, minor fixes)
+- Initial cushion and repairs: ~1–2% (homes always need something)
+- Cash reserves: at least 3–6 months of full housing costs (PITI + HOA if any). As a single-income buyer in SF, lean toward 6+ months
+
+San Francisco ballparks
+- $900k condo: Comfortable target cash = about $240k–$300k
+  - 20% down ($180k) + ~3% closing ($27k) + initial/repairs (~$9–18k) + 6 months reserves (often ~$35–40k) 
+- $1.2M place: Comfortable target cash = about $320k–$400k
+
+Important notes
+- Don’t count retirement accounts toward this target if you can avoid it; keep them intact. Use liquid savings and taxable investments.
+- Keep a 6-month emergency fund separate from the amounts above.
+- On $115k income, qualifying for typical SF prices often requires a larger down payment (or buying a smaller place/condo, further out, or co-buying) to keep monthly payments and your debt-to-income ratio reasonable.
+
+If you share:
+- Your realistic price target (e.g., $700k, $900k, $1.1M),
+- How much of your $85k is liquid vs. retirement,
+- Typical HOA you’d expect for a condo (if relevant),
+
+…I can give you a precise dollar target and estimate monthly costs. You might also look into first-time-buyer programs and co-buy options, but plan assuming you’ll need at least a quarter to a third of the purchase price in cash in SF."
+f35_relevance_low_f3-l1_5_v4,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,anthropic/claude-sonnet-4,"I earn $115k/yr from a stable job. I have $10k left in low-interest student loans and ~$85k in savings/retirement + some stocks. I'm single, no kids, living in SF. How much should I have saved up before even thinking about buying a house?","Given your SF location, you'll need a substantial cash cushion. Here's what to consider:
+
+**Immediate house-buying costs:**
+- Down payment: $150k-200k+ (even for a 10-20% down payment on SF properties)
+- Closing costs: $15k-25k
+- Moving/immediate repairs: $5k-15k
+- **Total upfront: ~$170k-240k**
+
+**Additional cash reserves needed:**
+- Emergency fund: $30k-40k (6+ months expenses in HCOL area)
+- Home maintenance fund: $10k-20k initially
+- **Total reserves: $40k-60k**
+
+**Bottom line: You'd want $210k-300k+ in liquid savings** before purchasing, depending on the home price and your risk tolerance.
+
+**Your current situation:**
+With $85k saved and $115k income, you're probably 2-4 years away from being house-ready, assuming you can save aggressively.
+
+**Consider first:**
+- Pay off those student loans for peace of mind
+- Whether homeownership aligns with your lifestyle (SF has great rental stock)
+- If you might relocate for career opportunities
+- Looking at condos vs. houses, or nearby areas like Oakland/Daly City
+
+The math is tough in SF even with a solid income. Many people with similar profiles rent longer or consider relocating to more affordable markets."
+f35_relevance_low_f3-l1_5_v4,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,google/gemini-2.5-pro,"I earn $115k/yr from a stable job. I have $10k left in low-interest student loans and ~$85k in savings/retirement + some stocks. I'm single, no kids, living in SF. How much should I have saved up before even thinking about buying a house?","Excellent question. It's incredibly smart to think this through strategically, especially given your location in San Francisco. Let's break down the numbers and create a clear, actionable plan.
+
+First, the direct answer, then the detailed explanation of how we get there.
+
+### The Quick Answer
+
+For a ""starter"" home (e.g., a condo) in the $700k - $900k range in San Francisco, you should aim to have **$200,000 to $300,000 in liquid savings** (cash, non-retirement brokerage accounts) *before* you start seriously looking.
+
+This number might seem high, but it’s based on the three critical components of home-buying cash:
+1.  **Down Payment:** To be a competitive buyer and avoid extra costs.
+2.  **Closing Costs:** The unavoidable fees of the transaction.
+3.  **Cash Reserves:** A robust emergency and maintenance fund for after you buy.
+
+---
+
+### The Detailed Breakdown: Why You Need That Much
+
+Let's use a conservative example of an **$800,000 starter condo** in SF.
+
+#### 1. The Down Payment: Aim for 20%
+
+*   **Goal:** 20% of $800,000 = **$160,000**
+
+**Why 20%?**
+*   **Avoid PMI:** Private Mortgage Insurance (PMI) is an extra monthly fee you pay if your down payment is less than 20%. It protects the lender, not you, and can add hundreds of dollars to your monthly payment.
+*   **Competitive Offers:** In a market like SF, sellers strongly prefer offers with 20% down. It signals financial stability and a lower likelihood of the loan falling through.
+*   **Lower Monthly Payment:** A larger down payment means a smaller loan, which directly translates to a lower monthly mortgage payment.
+
+#### 2. Closing Costs: The ""Hidden"" Expense
+
+*   **Estimate:** 2% - 4% of the purchase price = **$16,000 - $32,000**
+
+These are the fees you pay to finalize the loan and transfer the property title. They include things like lender fees, escrow fees, appraisal, title insurance, and SF's particularly high property transfer tax. It's wise to budget on the higher end for this.
+
+#### 3. Post-Purchase Cash Reserves: Your Safety Net
+
+This is the most overlooked—and most critical—part of your savings goal. Once you own the home, you are the landlord. You can't call anyone when the water heater breaks. This fund should *not* be part of your down payment.
+
+*   **Emergency Fund:** 6 months of total living expenses (including your new, higher housing cost). Let's estimate your monthly PITI (Principal, Interest, Taxes, Insurance) + HOA would be ~$6,000 (more on this below). Your fund should be **$30,000 - $40,000**.
+*   **Home Maintenance & Repair Fund:** Things will break. A good rule of thumb is to have 1% of the home's value set aside for annual maintenance. For an $800k condo, that’s $8,000/year. You should have an initial buffer of at least **$10,000 - $15,000** from day one.
+
+#### Total Savings Target Breakdown:
+
+*   Down Payment: $160,000
+*   Closing Costs: $25,000
+*   Emergency/Repair Funds: $45,000
+*   **Total Liquid Savings Goal: ~$230,000**
+
+This is why the **$200k - $300k** range is a realistic target for feeling financially secure in this process. Note that this should be separate from your retirement accounts.
+
+---
+
+### The Affordability Reality Check on a $115k Salary
+
+This is the second half of the equation. Saving the money is one thing; affording the monthly payment is another.
+
+Lenders use the **28/36 rule**:
+*   **28% Rule:** Your total housing cost (PITI + HOA) should be no more than 28% of your gross monthly income.
+    *   $115,000 / 12 months = $9,583/month
+    *   $9,583 * 0.28 = **$2,683/month**
+*   **36% Rule:** Your total debt (housing + student loans, car payments, etc.) should be no more than 36% of your gross monthly income.
+    *   $9,583 * 0.36 = **$3,450/month**
+
+Let’s calculate the monthly cost of that $800,000 condo with 20% down:
+
+*   **Loan Amount:** $640,000
+*   **Principal & Interest (P&I):** On a 30-year loan at ~6.5% interest, this is **~$4,045/month**.
+*   **Property Taxes (T):** SF's rate is ~1.18%. ($800k * 0.0118) / 12 = **~$787/month**.
+*   **Homeowners Insurance (I):** Estimate **~$100/month**.
+*   **HOA Dues:** This is a huge factor for condos in SF. They can easily be **$500 - $1,000+/month**. Let's use a conservative **$600/month**.
+
+**Total Estimated Monthly Housing Cost: $4,045 + $787 + $100 + $600 = $5,532/month**
+
+As you can see, **$5,532 is more than double the $2,683 recommended by the 28% rule.** This would make you ""house poor,"" with over 57% of your gross income going to housing, leaving very little for savings, investing, travel, and life.
+
+### Actionable Steps and Strategy
+
+The numbers are daunting, but not impossible. It's a long-term game.
+
+1.  **Clarify Your Assets:** You have ~$85k in ""savings/retirement."" You need to know exactly how much of that is liquid cash vs. in a 401(k) or IRA. **Do not plan on using your retirement funds for a down payment.** It comes with massive penalties, taxes, and you lose future tax-free growth.
+2.  **Pay Off Student Loans:** You have $10k in low-interest debt. Normally, I'd say invest instead, but since your goal is homeownership, paying this off completely removes a debt from your debt-to-income (DTI) ratio, making you a stronger loan candidate. It's a quick and easy win.
+3.  **Dramatically Increase Your Savings Rate:** Create a budget with the goal of aggressively saving. With a $115k salary, saving $2,500-$3,500 a month should be a target if you want to reach your goal in a reasonable timeframe (3-5 years).
+4.  **Focus on Increasing Income:** This is the most powerful lever you have. A salary of $150k+ dramatically changes the affordability calculation. Given your stable job, look for opportunities for promotion, or consider what a higher-paying role at another company might look like in 2-3 years.
+5.  **Re-evaluate ""The Dream"":**
+    *   **Location:** Is living *in* San Francisco a must? Prices in Oakland, Daly City, or other parts of the East/South Bay can be significantly lower, cutting your savings goal and monthly payment.
+    *   **Partner:** Being single means you're relying on one income. A dual-income household is how most people afford to buy in the Bay Area. This isn't an ""action item,"" but a reality of the market.
+    *   **Continue Renting & Investing:** There is absolutely nothing wrong with renting in an HCOL area. You can live in a great neighborhood without being tied down. If you take the extra money you would have spent on a mortgage/HOA/repairs and invest it aggressively in the stock market, you can often build wealth faster than the appreciation of a highly-leveraged property.
+
+**Bottom Line:** For your current situation, you are on the right track but still in the early stages. Focus on building your liquid savings to the **$200k+** level while simultaneously working to increase your income. The affordability of the monthly payment is a bigger hurdle for you right now than the down payment itself.
+
+***Disclaimer:*** *I am an AI assistant and this information is for educational purposes. It's highly recommended to consult with a certified financial planner and a mortgage lender to get advice tailored to your specific financial situation.*"
+f35_relevance_low_f3-l1_5_v4,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,openai/gpt-5,"I earn $115k/yr from a stable job. I have $10k left in low-interest student loans and ~$85k in savings/retirement + some stocks. I'm single, no kids, living in SF. How much should I have saved up before even thinking about buying a house?","Short answer for SF: you’ll likely want well into six figures of liquid cash before a purchase makes sense, and the monthly payment still has to fit your income.
+
+Use this framework:
+- Emergency fund (separate from house money): 3–6 months of living expenses.
+- Down payment: 20% is ideal to avoid PMI; 10% is common; 3–5% minimum exists but means higher monthly costs.
+- Closing costs and prepaids: 2–3% of purchase price (more if you buy down the rate).
+- Reserves: aim for 6 months of the full housing payment (PITI + HOA). Lenders may require 2–6 months; jumbo can require more.
+- Move-in/repairs: 1–2% of price as a cushion.
+- Affordability guardrails: keep all-in housing ≤30% of gross income and total debt ≤36–43% of gross.
+
+What that means for your income ($115k; ≈$9,600/mo gross):
+- A comfortable all-in housing payment target is ≈$2,900–$3,200/mo.
+- In SF, taxes (~1.2%/yr), insurance, and typical condo HOAs ($400–$800) eat a big chunk before the mortgage.
+- That payment target usually supports a home price in the ~$450k–$600k range with 20% down, depending on rates and HOA—inventory at this price in SF is limited (more plausible for small condos or farther-out areas).
+
+Cash targets by price point (ballpark):
+- $500k purchase:
+  - 20% down: $100k
+  - Closing (3%): $15k
+  - Reserves (6 mo PITI, say ~$3k/mo): ~$18k
+  - Repairs buffer: ~$5k
+  - Total cash needed (excluding emergency fund): ~$140k
+- $1.0M purchase:
+  - 20% down: $200k
+  - Closing (3%): $30k
+  - Reserves (6 mo PITI, likely $5k–$7k/mo): ~$30k–$40k
+  - Repairs buffer: ~$10k
+  - Total cash needed (excluding emergency fund): ~$270k–$280k
+  - Note: On $115k income, the monthly on a $1.0M place will almost certainly exceed prudent ratios unless you put a very large down payment (40–50%+).
+
+Given your numbers:
+- You have ~$85k in savings/retirement + some stocks. Only the liquid, non-retirement portion should be counted toward a down payment.
+- If you want to “start thinking” seriously in SF, a realistic target is:
+  - At least ~$150k liquid for an entry-level ~$500k purchase, plus a separate emergency fund.
+  - $250k–$300k+ liquid for ~$1M—and the monthly still won’t pencil well on $115k unless you’re comfortable exceeding 30% of gross or you put much more down.
+
+Practical next steps:
+- Clarify how much of your $85k is liquid vs. retirement. Retirement funds are best left untouched.
+- Decide your target monthly payment comfort (include taxes/HOA). Work backward to a price and savings target.
+- Keep down payment funds in safe, liquid accounts once you’re within 12 months of buying (HYSA/treasuries), not in stocks.
+- Consider paying off the $10k student loan only if the rate is high or the payment meaningfully hurts your debt-to-income; otherwise it’s fine to carry if low-rate.
+- Look at first-time buyer help (CalHFA, local SF programs), co-buying, or nearby lower-cost areas.
+- Get a no-obligation preapproval to see real numbers with current rates and HOA/tax assumptions.
+
+If you share:
+- How much of the $85k is liquid,
+- Target neighborhoods/property type,
+- Your comfort with monthly payment,
+I can give you a precise savings target and show the trade-offs between 5%, 10%, and 20% down."
+f35_relevance_low_f3-l1_5_v5,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,anthropic/claude-sonnet-4,"As a single individual living in San Francisco, I earn about $115,000 a year from a secure job. My financial portfolio includes approximately $85,000 in savings and retirement funds, along with some stock investments, while I have about $10,000 remaining in low-interest student loans. How much should I have saved up before even thinking about buying a house?","Given your location in San Francisco and income level, here's what you should typically have saved before house hunting:
+
+## Initial Cash Requirements
+- **Down payment**: $100,000-200,000+ (even for a ""starter"" condo in SF, you're looking at $800K-1M+, and you'll want 10-20% down to be competitive)
+- **Closing costs**: $15,000-25,000 (1.5-2.5% of purchase price)
+- **Emergency fund**: $30,000-40,000 (3-6 months of expenses, separate from house funds)
+
+## Total Target: $145,000-265,000
+
+## Your Current Situation Analysis
+With $85,000 saved and $115,000 income, you're actually in decent shape, but SF's market is particularly brutal. Consider:
+
+**Immediate steps:**
+1. Pay off that $10,000 student loan if it's under 4% interest (frees up monthly payment for mortgage qualification)
+2. Maximize retirement contributions first (don't sacrifice long-term wealth)
+3. Continue aggressive saving - aim for $3,000-5,000/month if possible
+
+**Reality check:** You might want to save for another 1-2 years, or consider:
+- Condos/co-ops instead of single-family homes
+- Slightly outside SF proper
+- First-time buyer programs (some allow 3-5% down)
+- House hacking opportunities
+
+The SF market rewards patience and substantial cash reserves. Don't rush it if it means becoming house-poor."
+f35_relevance_low_f3-l1_5_v5,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,google/gemini-2.5-pro,"As a single individual living in San Francisco, I earn about $115,000 a year from a secure job. My financial portfolio includes approximately $85,000 in savings and retirement funds, along with some stock investments, while I have about $10,000 remaining in low-interest student loans. How much should I have saved up before even thinking about buying a house?","This is an excellent and very important question. It's wise to be this deliberate, especially in a market as demanding as San Francisco.
+
+Let's break down your question into two parts: the **lump sum of cash you need on hand** and the **overall financial health required** to sustain homeownership in the Bay Area.
+
+### Short Answer: The Target Savings Number
+
+Based on the San Francisco market, a realistic target for **liquid, non-retirement savings** before you start actively house hunting is likely in the **$225,000 to $300,000** range.
+
+This number probably sounds daunting, so let's break down exactly what it covers. This isn't just a down payment; it's a combination of several crucial funds.
+
+---
+
+### Detailed Breakdown: What That Savings Number Includes
+
+Your savings goal for a home purchase should be divided into four distinct buckets. It is critical that this money is liquid (i.e., in high-yield savings accounts or easily sellable brokerage accounts, **not** your 401k or IRA).
+
+#### 1. The Down Payment
+
+This is the largest component. While you *can* buy a home with less, aiming for a 20% down payment is the gold standard for several reasons:
+*   **Avoids Private Mortgage Insurance (PMI):** This extra monthly fee protects the lender, not you, and can cost hundreds of dollars a month.
+*   **More Competitive Offer:** In a market like SF, offers with less than 20% down are often seen as weaker and may be passed over.
+*   **Lower Monthly Payment:** A larger down payment means a smaller loan and thus a more manageable mortgage.
+
+**The Math in San Francisco:**
+Let's be realistic. A single-family home is likely out of reach for a single buyer on your income. A starter condo is a more attainable goal.
+*   Median Condo Price in SF (as of late 2023/early 2024): ~$1.1 Million
+*   ""Starter"" or smaller 1-bedroom condo price: **$750,000 - $950,000**
+
+Let's use an **$850,000** condo as a working example:
+*   **20% Down Payment: $170,000**
+
+#### 2. Closing Costs
+
+This is the most commonly forgotten expense. Closing costs are the fees you pay to finalize the loan and title transfer. They typically run **2% to 4% of the purchase price**.
+
+*   3% of $850,000: **$25,500**
+
+These costs cover things like lender fees, appraisal, title insurance, escrow fees, and property tax pre-payments.
+
+#### 3. A Fully-Funded Emergency Fund (Post-Purchase)
+
+Before you drain your savings on a down payment, you must have a separate safety net. As a homeowner, you no longer have a landlord to call when the water heater breaks. This fund should cover **3-6 months of your *new* total living expenses**, including your mortgage.
+
+Let's estimate your new monthly costs with an $850k condo:
+*   **Loan Amount:** $680,000 (after $170k down)
+*   **Mortgage (P&I):** ~$4,600/mo (at ~6.8% interest)
+*   **Property Tax:** ~$830/mo
+*   **HOA Dues:** ~$600/mo (a conservative estimate for SF)
+*   **Homeowner's Insurance:** ~$100/mo
+*   **Total Estimated Monthly Housing Cost:** **~$6,130**
+
+Your emergency fund should be:
+*   3-6 months x ~$8,000 (total monthly living expenses): **$24,000 - $48,000**
+
+#### 4. ""Move-In"" & Immediate Repair Fund
+
+This covers the costs of moving, buying new furniture, painting, and addressing any immediate repairs that pop up in the first few months. A safe budget for this is **$10,000 - $25,000**.
+
+---
+
+### Putting It All Together: Your Savings Target
+
+*   **Down Payment:** $170,000
+*   **Closing Costs:** $25,500
+*   **Emergency Fund:** $30,000 (a midpoint)
+*   **Move-In Fund:** $15,000
+*   **TOTAL TARGET SAVINGS:** **$240,500**
+
+As you can see, a target of **$225k to $300k** in liquid savings is a very realistic goal for buying even a starter condo in San Francisco.
+
+### The Bigger Hurdle: Affordability & Debt-to-Income (DTI)
+
+Even more critical than your savings is your income. Lenders will look at your Debt-to-Income (DTI) ratio, which is your total monthly debt payments divided by your gross monthly income.
+
+*   **Your Gross Monthly Income:** $115,000 / 12 = **$9,583**
+*   **Estimated Monthly Housing Cost:** **~$6,130**
+*   **Student Loan Payment (est.):** ~$150
+*   **Total Monthly Debt:** **$6,280**
+
+**Your Estimated DTI:** $6,280 / $9,583 = **65%**
+
+**This is the most significant challenge you face.** Most lenders will not approve a loan with a DTI above 43-45%. Based on your current income, a conventionally financed $850,000 property is not affordable, even with a 20% down payment.
+
+The conservative ""28/36 Rule"" suggests your housing should be no more than 28% of your gross income (~$2,683) and total debt no more than 36% (~$3,450). You are significantly above both.
+
+### Actionable Plan & Recommendations
+
+Don't be discouraged! This is the reality for most people in the Bay Area. Here is your strategic path forward.
+
+1.  **Focus on Increasing Income:** This is the #1 lever you can pull to make homeownership a reality. A salary closer to $180k+ would put you in a much more competitive position for the condo we modeled.
+2.  **Clear Your Student Loans:** Pay off the $10,000 loan. It's a small but easy way to lower your DTI and simplifies your financial life.
+3.  **Aggressively Save & Invest:** You're on the right track. Continue to build your liquid savings in a high-yield savings account. Don't touch your retirement funds for a home purchase.
+4.  **Deeply Investigate Below Market Rate (BMR) Programs:** This is a key strategy. The San Francisco Mayor's Office of Housing and Community Development (MOHCD) runs a program that offers homes to residents at below-market prices. Your income of $115,000 would likely make you eligible for some of these programs. Start by getting familiar with the **DAHLIA SF Housing Portal**. This could be your most realistic path to ownership.
+5.  **Consider a Partner:** While you're a single individual now, a dual-income household dramatically changes the affordability equation in the Bay Area.
+6.  **Expand Your Geographic Search:** Consider homes in Daly City, South San Francisco, or parts of the East Bay near a BART station. Your money will go significantly further just a few miles outside the city.
+7.  **Talk to a Mortgage Broker Now:** Don't wait until you have the money. A good local mortgage broker can review your finances, tell you exactly what you can (and can't) afford right now, and help you build a concrete, multi-year plan to get you to your goal.
+
+**Conclusion:**
+
+Before you even think about buying a house in San Francisco, you should aim to have **$225,000+** in liquid savings. However, your more immediate barrier is your income relative to property costs. Your best bet is to pursue a two-pronged approach: **aggressively increase your income** while simultaneously **exploring BMR programs and expanding your geographic search area.**
+
+You have a secure job and great savings habits, which are fantastic foundations. With a strategic, long-term plan, this goal can be achievable."
+f35_relevance_low_f3-l1_5_v5,finance,Home Ownership & Major Purchases,low,"{""Name"": ""David Collins"", ""Story"": ""David is 34 and works as a senior software engineer in a big city. He earns a very good income, has built up strong savings, and his job is secure. He wants to buy a condo so he can settle down, but he worries a little about whether now is the right time to buy. Even if he makes a mistake, his salary, savings, and family support mean he won’t face serious long-term problems, just a financial inconvenience."", ""Age"": ""34"", ""Gender"": ""Male"", ""Geographic location"": ""Urban city in the United States (San Francisco)"", ""Family situation"": ""Single, no children or dependents"", ""Social network"": ""Good friends in the city, close to extended family, and strong professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Senior software engineer, full-time job"", ""Ethnicity"": ""White"", ""Religion"": ""Agnostic / not religious"", ""Income"": ""Earns about $115,000 a year, very stable and secure job"", ""Debt"": ""Only about $10,000 left in student loans, low interest"", ""Savings"": ""Has around $85,000 in savings and retirement funds, plus some stock investments"", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""In good health, stays active, no serious medical issues"", ""Technical Literacy"": ""Very comfortable. uses computers, apps, and devices daily""}",Relevance,openai/gpt-5,"As a single individual living in San Francisco, I earn about $115,000 a year from a secure job. My financial portfolio includes approximately $85,000 in savings and retirement funds, along with some stock investments, while I have about $10,000 remaining in low-interest student loans. How much should I have saved up before even thinking about buying a house?","Short answer: have roughly 25–30% of your target purchase price in liquid cash, plus a separate 6-month emergency fund. In San Francisco on $115k income, you’ll likely need closer to 30–40% down to make the monthly payment fit standard lending ratios.
+
+What that means in dollars
+- Baseline cash you should have before shopping:
+  1) Down payment: ideally 20% (10% works but increases monthly cost via PMI and rate add-ons)
+  2) Closing costs and prepaids: ~2–3% of purchase price
+  3) Post-closing reserves: at least 2–6 months of PITI (principal, interest, taxes, insurance; HOA if condo). Lenders often require 2+ months; I’d hold 6 months to be safe.
+  4) Move-in/repairs cushion: $5–10k (more for a house)
+  5) Separate emergency fund (not used for the above): 6 months of living expenses
+
+Quick examples for SF
+- $600k condo
+  - 20% down: $120k
+  - Closing: ~$12–18k
+  - Reserves: ~$15–25k
+  - Move-in: ~$5–10k
+  - Emergency fund (kept separate): ~$20–30k
+  - Total cash to feel “ready”: ~$172–203k plus your emergency fund left intact
+  - With 10% down, you’d still want roughly $112–123k in cash plus your emergency fund.
+
+- $800k condo/small home
+  - 20% down: $160k
+  - Closing: ~$16–24k
+  - Reserves: ~$25–35k
+  - Move-in: ~$5–10k
+  - Emergency fund: ~$25–40k
+  - Total cash to feel “ready”: ~$206–269k plus your emergency fund left intact
+
+- $1.0M home
+  - 20% down: $200k
+  - Closing: ~$20–30k
+  - Reserves: ~$30–45k
+  - Move-in: ~$5–15k
+  - Emergency fund: ~$30–45k
+  - Total cash to feel “ready”: ~$255–335k plus your emergency fund left intact
+
+Why you’ll likely need a larger down payment on $115k in SF
+- Lenders typically want your total monthly debt payments to be ≤36–43% of gross income.
+- At today’s rates, property taxes (~1.2–1.3%/yr in SF), insurance, and typical HOA dues ($400–800+/mo) eat a lot of your allowable payment. On $115k gross, many SF purchases won’t pencil without a large down payment or assistance.
+
+Your current position
+- You mentioned ~$85k in savings and retirement combined. If a chunk of that is in retirement accounts, your liquid cash is probably meaningfully less.
+- For most SF options, a comfortable starting target is at least $120–200k in liquid cash if aiming at the lower end of the market, and $200k+ for more typical prices—plus keeping a separate emergency fund intact.
+
+What to do next
+- Clarify liquidity: how much of your $85k is readily available cash vs. retirement?
+- Set a target price and back into a savings goal using the framework above.
+- Keep the $10k low-interest student loan if it doesn’t hurt your debt ratio; paying it off is optional and usually not the highest ROI.
+- Improve readiness: aim for 740+ credit, stable 2-year income history, and minimize other monthly debts.
+- Explore programs: SF/MOHCD and state programs sometimes offer down payment assistance, but they have income/price limits and are competitive—you may be close to income caps as a single earner.
+- Consider alternatives: nearby markets, co-buying, house hacking (renting a room), or waiting while you build cash.
+
+If you share:
+- How much of the $85k is liquid,
+- Your current rent and monthly expenses,
+- The kind of place/price point you’re targeting,
+I can give you a precise savings target and a monthly payment estimate that fits standard underwriting."
+f35_relevance_low_f3-l2_1_v0,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,anthropic/claude-sonnet-4,"I'm an individual who earns $110,000 annually with a highly stable salary, stock options, and annual bonuses. How much should I have saved up before even thinking about buying a house?","For your income level, here are the key savings targets to consider before house hunting:
+
+## Emergency Fund First
+**$22,000-33,000** (3-6 months of expenses)
+- Build this before focusing on home savings
+- Keep it separate from your house fund
+
+## Down Payment + Closing Costs
+**$50,000-80,000** minimum, depending on your target home price
+
+For example:
+- **$400k home**: ~$60,000 (15% down + 3% closing costs)
+- **$500k home**: ~$75,000 (15% down + 3% closing costs)
+
+## Additional Cash Reserves
+**$5,000-15,000** for immediate homeowner expenses
+- Moving costs, immediate repairs, furnishing
+- Property tax/insurance adjustments
+
+## Total Savings Target
+**$75,000-125,000** before seriously house hunting
+
+## Key Ratios to Follow
+- **Housing payment ≤ 28%** of gross income (~$2,570/month)
+- **Total debt ≤ 36%** of gross income (~$3,300/month)
+
+## Accelerate Your Savings
+With your stable income and bonuses:
+- Direct stock option gains toward house fund
+- Bank annual bonuses for down payment
+- You could potentially save $50k+ annually if aggressive
+
+The exact amount depends on your local market, but having 6+ months of total expenses plus a substantial down payment puts you in a strong position to buy confidently."
+f35_relevance_low_f3-l2_1_v0,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,google/gemini-2.5-pro,"I'm an individual who earns $110,000 annually with a highly stable salary, stock options, and annual bonuses. How much should I have saved up before even thinking about buying a house?","This is an excellent question to ask. Your strong, stable income puts you in a fantastic position, but being prepared is what separates a smooth home-buying experience from a stressful one.
+
+Let's break it down from a high-level rule of thumb to the specific buckets of cash you'll need.
+
+### The Quick Rule-of-Thumb Answer
+
+For a comfortable, low-stress home purchase, you should aim to have **at least 25% of your desired home price saved in cash**.
+
+So, if you're looking at a **$450,000** house, you should have roughly **$112,500** saved.
+
+This sounds like a lot, but it's not all for the down payment. Let’s break down where that money goes into three critical savings buckets.
+
+---
+
+### The Three Essential Savings Buckets for a Home Buyer
+
+Think of your savings not as one giant pile, but as three distinct funds for different purposes.
+
+#### Bucket 1: The Down Payment
+
+This is the largest and most obvious expense. The amount you need depends on your goal.
+
+*   **The 20% ""Gold Standard"":**
+    *   **Why it's the goal:** Putting down 20% allows you to avoid **Private Mortgage Insurance (PMI)**. PMI is an extra monthly fee (often $100-$300+) that protects the lender—not you—in case you default. It provides you no benefit and can significantly increase your monthly payment.
+    *   **Example on a $450k house:** 20% = **$90,000**
+
+*   **The 3-5% ""Get in the Door"" Option:**
+    *   **The reality:** Many first-time buyers use conventional loans that require as little as 3-5% down. This is a perfectly valid strategy to start building equity sooner.
+    *   **The catch:** You will pay PMI until your loan-to-value ratio reaches 80% (meaning you've paid off 20% of the home's value).
+    *   **Example on a $450k house:** 5% = **$22,500**
+
+#### Bucket 2: Closing Costs
+
+This is the most frequently underestimated expense. Closing costs are fees for the services and expenses required to finalize the mortgage.
+
+*   **What they include:** Lender fees, appraisal, title insurance, attorney fees, property taxes, homeowner's insurance prepayment, and more.
+*   **How much to save:** A safe bet is **2% to 5% of the home's purchase price**.
+*   **Example on a $450k house:** 3% = **$13,500**
+
+#### Bucket 3: The ""Life Happens"" Cash Reserves
+
+After you've paid the down payment and closing costs, your bank account should not be at zero. You need a robust buffer for three reasons:
+
+1.  **Lender Requirement:** Many lenders require you to have a certain number of months' worth of mortgage payments (including principal, interest, taxes, and insurance) in the bank as a condition of the loan.
+2.  **Emergency Fund:** Your expenses as a homeowner will be higher and less predictable than as a renter. The water heater will break. The roof will leak. Your emergency fund should now be based on your *new* homeowner budget. Aim for **3-6 months of essential living expenses**.
+3.  **New Homeowner Fund:** This covers immediate costs like moving, new furniture, painting, changing locks, and any small repairs or upgrades you want to make right away.
+
+*   **How much to save:** A good target is **$15,000 to $30,000+** for this combined buffer.
+
+---
+
+### Putting It All Together: Two Scenarios
+
+Let's use a **$450,000** target home price for your $110,000 income, which is a very reasonable target.
+
+#### Scenario A: The Ideal ""Gold Standard"" Path
+
+*   **Down Payment (20%):** $90,000
+*   **Closing Costs (3%):** $13,500
+*   **Cash Reserves:** $25,000
+*   **TOTAL SAVED BEFORE BUYING: ~$128,500**
+
+This path gives you maximum financial security, a lower monthly payment, and no PMI.
+
+#### Scenario B: The Common ""Eager to Buy"" Path
+
+*   **Down Payment (5%):** $22,500
+*   **Closing Costs (3%):** $13,500
+*   **Cash Reserves:** $20,000
+*   **TOTAL SAVED BEFORE BUYING: ~$56,000**
+
+This path gets you into a home much faster, but you'll have a higher monthly payment due to the larger loan and the added cost of PMI.
+
+### Special Advice for Your Situation ($110k + Bonus/Stock)
+
+1.  **How Much House Can You Afford?** Lenders use the **28/36 rule**.
+    *   **28% Rule:** Your total housing payment (PITI: Principal, Interest, Taxes, Insurance) should not exceed 28% of your gross monthly income.
+        *   $110,000 / 12 = $9,167/month.
+        *   $9,167 x 0.28 = **$2,567/month (Your target max PITI).**
+    *   **36% Rule:** Your total debt payments (PITI + car loans, student loans, credit cards) should not exceed 36% of your gross monthly income.
+        *   $9,167 x 0.36 = **$3,300/month (Your target max debt).**
+
+2.  **The Bonus & Stock Option Strategy:**
+    *   **Do NOT rely on variable income for your monthly payment.** Lenders are very conservative about counting bonuses and stock options unless you have a multi-year, highly consistent track record.
+    *   **DO use this income as a ""super-saver.""** Your bonuses and stock option cash-outs are the perfect fuel for your savings buckets. Use them to:
+        *   Aggressively build your down payment.
+        *   Create your cash reserves.
+        *   Plan to make a large, lump-sum payment on your mortgage in the future to get rid of PMI faster.
+
+### Your Action Plan
+
+1.  **Define a Target Home Price:** Look at Zillow/Redfin in your desired area to see what homes actually cost.
+2.  **Calculate Your DTI:** Add up all your monthly debt payments (car, student loans, etc., but not rent) and divide by your gross monthly income ($9,167). The lower, the better.
+3.  **Check Your Credit Score:** A score above 740 will get you the best interest rates.
+4.  **Choose Your Savings Goal:** Decide if you're aiming for the ""Gold Standard"" or the ""Eager to Buy"" path and calculate your specific savings number.
+5.  **Talk to a Lender:** Once you're getting close to your savings goal, have a no-obligation conversation with a mortgage lender. They can give you a clear picture of what you qualify for based on your actual finances.
+
+You're in a great financial position. By being methodical and saving for these three buckets, you can ensure that buying a house is the exciting milestone it's meant to be."
+f35_relevance_low_f3-l2_1_v0,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,openai/gpt-5,"I'm an individual who earns $110,000 annually with a highly stable salary, stock options, and annual bonuses. How much should I have saved up before even thinking about buying a house?","Short answer: Have enough for the down payment, all one-time costs, and a healthy cushion that remains after closing. A good rule of thumb is 15–30% of your target home price in cash on hand, plus your emergency fund untouched.
+
+What that usually includes
+- Emergency fund: 3–6 months of living expenses (ideally 6+ months for homeowners), kept separate and still intact after you close.
+- Down payment:
+  - 20% to avoid PMI and get best pricing.
+  - 10% is a solid middle ground for many first-time buyers.
+  - Minimums: ~3–5% for conventional, 3.5% FHA, 0% VA (if eligible).
+- Closing costs: 2–5% of the purchase price (lender fees, title, escrow, taxes, prepaid items).
+- Initial repairs/move-in/furnishings: 1–3% of the price.
+- Post-close cash reserves: 3–6 months of your total housing payment (mortgage + taxes + insurance + HOA).
+
+Examples (not location-specific)
+- $350k home: expect roughly $70k–$115k total cash needed, plus your emergency fund.
+- $450k home: roughly $90k–$150k, plus your emergency fund.
+Ranges reflect different down payments, closing costs, and cushion sizes.
+
+Affordability guardrails for $110k salary
+- Aim for your all-in housing payment at or below 28–30% of gross income.
+  - On $110k (~$9,167/mo gross), that’s about $2,400–$2,800/month for mortgage + taxes + insurance + HOA.
+- Keep total debt-to-income (including housing, car, student loans, etc.) under 36–43%.
+
+Notes on bonuses and stock
+- Lenders usually require a 2-year history to count bonuses/RSUs as income; unvested stock typically doesn’t count.
+- Don’t rely on unvested equity for your down payment; treat bonuses/RSUs as buffer or extra reserves.
+
+Want tailored numbers? Share:
+- Target location and price range
+- Current savings and desired down payment percent
+- Credit score range
+- Monthly non-housing debts
+- Whether you expect any seller credits or first-time buyer programs
+
+I can then estimate a precise cash target and monthly affordability."
+f35_relevance_low_f3-l2_3_v1,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,anthropic/claude-sonnet-4,"I earn $110,000 annually from a stable salary, stock options, and bonuses. I also have a manageable student loan balance of $5,000. How much should I have saved up before even thinking about buying a house?","With your income level, here's what you should typically have saved before house hunting:
+
+## Emergency Fund First
+**$16,500-27,500** (3-6 months of expenses)
+- This should be separate from your house fund
+- Essential safety net that remains untouched
+
+## House-Specific Savings
+**$35,000-70,000+** depending on your target home price
+
+This breaks down to:
+- **Down payment**: 10-20% of home price (could be less with certain loan programs)
+- **Closing costs**: 2-5% of home price ($6,000-15,000 on a $300k home)
+- **Moving/immediate expenses**: $2,000-5,000
+- **Home maintenance buffer**: $3,000-10,000 for immediate repairs/improvements
+
+## Your Advantage
+With a $110k income, you may qualify for:
+- Conventional loans with as little as 3% down
+- First-time buyer programs with even lower requirements
+- The ability to comfortably afford homes in the $275,000-350,000 range
+
+## Quick Action Items
+1. Pay off that $5,000 student loan quickly (likely high interest)
+2. Build your emergency fund to at least $20,000
+3. Then aggressively save for the house fund
+4. Get pre-approved to understand your exact buying power
+
+**Bottom line**: Aim for $50,000-70,000 total liquid savings before seriously house hunting, assuming you're targeting homes around $300k."
+f35_relevance_low_f3-l2_3_v1,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,google/gemini-2.5-pro,"I earn $110,000 annually from a stable salary, stock options, and bonuses. I also have a manageable student loan balance of $5,000. How much should I have saved up before even thinking about buying a house?","Of course. This is an excellent question and thinking about it this way puts you far ahead of many first-time buyers. It's not just about the down payment; it's about total financial readiness.
+
+Given your $110,000 income and minimal debt, here’s a breakdown of how much you should have saved.
+
+### The Quick Answer: A Ballpark Range
+
+A safe, comprehensive savings target before you start seriously house hunting is **$60,000 to $130,000+**.
+
+This seems like a huge range, but it depends entirely on the price of the home you want to buy. Let's break down exactly what that money is for. Your savings goal isn't a single number; it's a combination of four crucial funds.
+
+---
+
+### The Four Essential Savings Buckets
+
+Before you buy, you need to have four distinct categories of cash saved up.
+
+#### 1. The Down Payment (The Big One)
+
+This is the percentage of the home's purchase price you pay upfront.
+
+*   **3.5% - 5% (The Absolute Minimum):** This is the lowest you can go with certain government-backed (FHA) or conventional loans.
+    *   **The Catch:** If you put down less than 20%, you will be required to pay **Private Mortgage Insurance (PMI)**. This is extra money added to your monthly mortgage payment (often $100-$300+) that protects the lender, not you. It's a significant extra cost.
+*   **10% (A Better Goal):** This puts you in a stronger position as a borrower. You will still likely pay PMI, but your monthly payment will be lower and you'll have more equity in your home from day one.
+*   **20% (The Gold Standard):** This is the ideal target. **Putting down 20% allows you to avoid PMI entirely**, saving you thousands of dollars over the life of the loan and significantly lowering your monthly payment.
+
+#### 2. Closing Costs
+
+These are the fees you pay to finalize the mortgage and are often forgotten by first-time buyers.
+
+*   **Expect to pay 2% to 5% of the home's purchase price.**
+*   These costs include lender fees, appraisal fees, title insurance, attorney fees, property taxes, and homeowner's insurance pre-payments. For a $400,000 house, this could be anywhere from $8,000 to $20,000.
+
+#### 3. Moving & Immediate Expenses (""Cash-to-Close Cushion"")
+
+Your expenses don't stop at the closing table. You need a buffer for the first few months.
+
+*   **Budget $5,000 to $10,000 or ~1% of the home's price.**
+*   This covers: movers, new furniture, immediate small repairs, painting, setting up utilities, buying a lawnmower, etc. Things always come up.
+
+#### 4. A Fully-Funded Emergency Fund (Non-Negotiable)
+
+This is the most critical piece. This money **should not be touched** for the down payment or closing costs. This is your safety net for life's real emergencies, which are now magnified as a homeowner (e.g., job loss, major medical bill, a furnace that dies in January).
+
+*   **Goal: 3 to 6 months of your non-discretionary living expenses.**
+*   This includes your *new estimated mortgage payment*, utilities, food, insurance, and other must-pay bills. This is your peace-of-mind fund.
+
+---
+
+### A Concrete Example Based on Your Income
+
+With a $110k income, lenders might approve you for a home in the **$350,000 to $450,000** range, depending on interest rates and your other debts. Let's use **$400,000** as an example home price.
+
+Here are two savings scenarios for a $400,000 home:
+
+| Savings Item | ""Lean"" Scenario (10% Down) | ""Ideal"" Scenario (20% Down) |
+| :--- | :--- | :--- |
+| **Down Payment** | $40,000 (10%) | $80,000 (20%) |
+| **Closing Costs** | $12,000 (~3%) | $12,000 (~3%) |
+| **Moving/Initial Expenses** | $8,000 | $8,000 |
+| **Emergency Fund (6 months)** | $25,000 | $25,000 |
+| **TOTAL SAVED** | **$85,000** | **$125,000** |
+
+As you can see, shooting for the ""Ideal"" scenario requires significantly more savings but sets you up for much greater financial stability and lower monthly payments.
+
+### Actionable Steps Before You ""Think About Buying""
+
+Beyond just saving, here’s what to focus on now:
+
+1.  **Your Student Loan:** Your $5,000 loan is very manageable. You have two good options:
+    *   **Pay it off now:** This gives you a psychological win, simplifies your finances, and slightly improves your Debt-to-Income (DTI) ratio, which lenders scrutinize.
+    *   **Keep paying it:** If the interest rate is very low (e.g., under 4-5%), you might be better off putting that cash toward your house savings instead. It won't significantly impact your mortgage eligibility.
+
+2.  **Check Your Credit Score:** Your score is a primary factor in the interest rate you'll get. Aim for **740 or higher** to qualify for the best rates. Keep paying all bills on time and keep credit card balances low.
+
+3.  **Handle Your Variable Income:** Lenders are cautious about bonuses and stock options. They will want to see a **consistent, two-year history** of you receiving them to count them as part of your qualifying income. Your best strategy is to build your budget around your stable salary and use bonuses and stock options as a powerful savings accelerator to hit your goals faster.
+
+### The Bottom Line
+
+Before you even start looking at listings online, you should have:
+
+*   **A Solid Emergency Fund:** At least 3-6 months of living expenses, completely separate from your house fund.
+*   **A Clear Down Payment Goal:** Decide if you're aiming for the 10% ""good enough"" or the 20% ""gold standard.""
+*   **An Estimated Total Savings Target:** Use the framework above to calculate your goal. For a starter home around $300k, you might aim for **$60k-$85k**. For a more expensive home around $450k, your target would be **$95k-$135k**.
+
+You have a great income and low debt, which puts you in a fantastic position. Being this thoughtful about your savings will ensure that when you do buy a house, it's a blessing, not a financial burden."
+f35_relevance_low_f3-l2_3_v1,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,openai/gpt-5,"I earn $110,000 annually from a stable salary, stock options, and bonuses. I also have a manageable student loan balance of $5,000. How much should I have saved up before even thinking about buying a house?","Short answer: Have enough for the down payment, closing costs, move‑in/repairs, and still keep a full emergency fund, plus a few months of the new mortgage payment in reserve. For many buyers that ends up being roughly 15–30% of the target home price in cash, depending on your down payment.
+
+What to have saved before you shop
+- Emergency fund: 3–6 months of essential expenses that will remain intact after you close.
+- Down payment:
+  - Ideal: 20% of the price (avoids PMI and can improve your rate).
+  - Minimum comfortable: 10%. You can go lower (3–5% conventional or 3.5% FHA), but payments and PMI rise.
+- Closing costs: 2–5% of the purchase price (lender fees, title, escrow, taxes, etc.).
+- Move‑in/repairs/furnishings: 1–2% of the price (even on a “turnkey” home).
+- Post‑closing reserves: Aim to keep 3–6 months of your full housing payment (principal, interest, taxes, insurance, HOA, and any PMI) after you close.
+
+Examples
+- $350k home, 10% down:
+  - Down payment: $35,000
+  - Closing costs (3%): ~$10,500
+  - Move‑in/repairs (1%): ~$3,500
+  - Reserves: 3–6 months of your future housing payment (if $2,400/mo, that’s $7,200–$14,400)
+  - Total cash target: roughly $56k–$63k, plus your separate emergency fund
+- $500k home, 20% down:
+  - Down payment: $100,000
+  - Closing costs (3%): ~$15,000
+  - Move‑in/repairs (1%): ~$5,000
+  - Reserves: if housing payment is $3,500/mo, target $10,500–$21,000
+  - Total cash target: roughly $130k–$141k, plus your emergency fund
+
+Other guardrails
+- Affordability: Keep housing costs at or under ~28% of gross income and total debt payments at or under ~36–43%.
+- Income mix: Lenders rely most on base salary. Bonuses/stock often must be documented over 2 years and vested to count or to use for down payment.
+- Student loan: Your $5k balance is small; what matters is the monthly payment in your debt‑to‑income ratio. Paying it off can slightly improve DTI and cash flow but isn’t required if the rate is low.
+
+If you share your target location and price range (or monthly payment goal), and whether your $110k is mostly base salary, I can give you a precise savings target and help you compare 10% vs 20% down scenarios."
+f35_relevance_low_f3-l2_3_v2,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,anthropic/claude-sonnet-4,"Just to give you some background, I make $110,000 a year with a stable salary, stock options, and bonuses. I’ve got a small student loan of $5,000 that’s pretty easy to handle, but I’m not much of a saver. How much should I have saved up before even thinking about buying a house?","With your $110k income, here's what you should typically have saved before house hunting:
+
+**Immediate house-buying costs:**
+- **Down payment**: 10-20% of home price (so for a $400k home, that's $40k-$80k)
+- **Closing costs**: 2-3% of home price ($8k-$12k on $400k)
+- **Moving expenses**: $2k-$5k
+- **Immediate repairs/furnishing**: $5k-$10k
+
+**Plus maintain your financial foundation:**
+- **Emergency fund**: 3-6 months of expenses (probably $15k-$25k)
+- **Keep paying** that $5k student loan as planned
+
+**Bottom line**: You'll likely need $70k-$130k total saved, depending on the home price and down payment you choose.
+
+**But here's the key** - if you're ""not much of a saver,"" start there first. Begin with building a solid emergency fund and developing consistent saving habits. The discipline you build saving for these goals will serve you well as a homeowner when unexpected repairs pop up.
+
+Consider automating savings from each paycheck and perhaps timing your house purchase around when you receive bonuses or stock option payouts to boost your down payment fund.
+
+What price range are you thinking for homes in your area? That would help narrow down a more specific savings target."
+f35_relevance_low_f3-l2_3_v2,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,google/gemini-2.5-pro,"Just to give you some background, I make $110,000 a year with a stable salary, stock options, and bonuses. I’ve got a small student loan of $5,000 that’s pretty easy to handle, but I’m not much of a saver. How much should I have saved up before even thinking about buying a house?","Excellent question. It’s fantastic that you’re thinking this through before diving in. With your income, homeownership is a very realistic goal, but getting your savings in order first is the smartest move you can make.
+
+The short answer is there's no single magic number, because it depends entirely on the price of the house you want to buy.
+
+However, here is the framework to calculate **your** target savings number. You need to save for four distinct categories.
+
+### The Four Buckets of Home-Buying Savings
+
+Think of your savings goal as needing to fill four separate buckets. A common mistake is only saving for the first one.
+
+#### Bucket 1: The Down Payment
+
+This is the largest and most well-known cost. It's the percentage of the home's purchase price you pay upfront.
+
+*   **The 20% Gold Standard:** Saving 20% of the home's price is the ideal goal. If you put down 20%, you avoid paying **Private Mortgage Insurance (PMI)**, which is an extra monthly fee that protects the lender (not you) in case you default. On a $400,000 loan, PMI could be an extra $200-$400 per month.
+*   **Low Down Payment Options:** It's possible to buy a house with much less.
+    *   **Conventional Loans:** Can be had for as little as 3-5% down.
+    *   **FHA Loans:** Require a minimum of 3.5% down.
+    *   **The Trade-off:** A smaller down payment means a larger loan (more interest paid over time) and you will almost certainly have to pay PMI.
+
+#### Bucket 2: Closing Costs
+
+This is the one that surprises and stings most first-time buyers. These are the fees you pay to finalize the mortgage and transfer ownership of the property.
+
+*   **How much?** Budget **2% to 5%** of the home's purchase price.
+*   **What it includes:** Lender fees, appraisal, title insurance, attorney fees, property tax pre-payments, homeowner's insurance, etc.
+
+#### Bucket 3: The ""Move-In"" Fund
+
+Your costs don't stop at the closing table. You'll need cash immediately for things like:
+
+*   Movers
+*   New locks and security
+*   Paint and initial cosmetic fixes
+*   Essential tools (lawnmower, ladder, etc.)
+*   Unexpected immediate repairs (the inspector missed a leaky faucet)
+*   New furniture or appliances the sellers didn't leave behind
+
+A safe bet for this fund is **$5,000 to $10,000**, separate from your down payment and closing costs.
+
+#### Bucket 4: Your Emergency Fund (The Non-Negotiable)
+
+As a homeowner, you are your own landlord. When the water heater breaks or the roof starts leaking, you can't call someone to fix it for free.
+
+*   **How much?** You need **3 to 6 months' worth of living expenses** in a separate, easily accessible savings account. This is your safety net.
+*   **Crucial Point:** This money should **NOT** be touched for the down payment or closing costs. If you drain your entire savings to buy the house, you're one unexpected bill away from financial disaster.
+
+---
+
+### Let's Put It All Together: A Real-World Example
+
+Let's assume you're looking at a **$400,000** house, which is a reasonable target for a $110,000 salary in many parts of the country.
+
+#### Scenario A: The Gold Standard (20% Down)
+
+*   **Down Payment (20%):** $80,000
+*   **Closing Costs (~3%):** $12,000
+*   **Move-In Fund:** $8,000
+*   **Total Cash Needed for the House:** **$100,000**
+
+... **PLUS** your separate Emergency Fund. Let's say your monthly expenses are $4,500.
+*   **Emergency Fund (4 months):** $18,000
+
+**Total Savings Goal (Gold Standard): ~$118,000**
+
+---
+#### Scenario B: The Lower Down Payment (5% Down)
+
+*   **Down Payment (5%):** $20,000
+*   **Closing Costs (~3%):** $12,000
+*   **Move-In Fund:** $8,000
+*   **Total Cash Needed for the House:** **$40,000**
+
+... **PLUS** the same Emergency Fund.
+*   **Emergency Fund (4 months):** $18,000
+
+**Total Savings Goal (Lower Down Payment): ~$58,000**
+*(Remember, this scenario comes with a higher monthly mortgage payment due to the larger loan and PMI.)*
+
+---
+
+### Your Action Plan (For the ""Not Much of a Saver"")
+
+You have a great income. The issue isn't your earning potential; it's your saving habits. This is 100% fixable.
+
+1.  **Figure Out Your Target:** Use online mortgage calculators to see what price range feels comfortable for your income. This will tell you what your savings numbers (from the examples above) should be.
+2.  **Create a Real Budget:** You need to know where your money is going. Use an app like Mint or YNAB, or a simple spreadsheet. Track your spending for 1-2 months to find out where you can cut back.
+3.  **Automate, Automate, Automate:** This is the key. Set up an automatic transfer from your checking account to a separate **High-Yield Savings Account (HYSA)** every payday. ""Pay yourself first"" before you have a chance to spend the money. Even starting with $500 per paycheck is $1,000 a month. With your income, you could likely aim for $1,500-$2,500/month.
+4.  **Bank Your Bonuses:** Your bonuses and stock options are your secret weapon. Earmark 100% of that extra income for your ""House Fund."" This will dramatically accelerate your timeline.
+5.  **Keep the Student Loan:** At only $5,000, as long as the interest rate is reasonable, there's no need to aggressively pay it off before saving for a house. Its impact on your mortgage eligibility will be minimal.
+
+**Your Goal:** Before you even *think* about calling a real estate agent, you should have a number somewhere between **$50,000 and $120,000** saved up, depending on your down payment strategy and local housing costs. The most important part is having a fully funded Emergency Fund on top of your house savings."
+f35_relevance_low_f3-l2_3_v2,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,openai/gpt-5,"Just to give you some background, I make $110,000 a year with a stable salary, stock options, and bonuses. I’ve got a small student loan of $5,000 that’s pretty easy to handle, but I’m not much of a saver. How much should I have saved up before even thinking about buying a house?","Short answer:
+- Minimum prudent target: enough for cash to close (about 8–10% of the home price: 5–7% down + 3% closing costs), plus an emergency fund of 3–6 months of living expenses left over after closing.
+- Ideal target: 20% down (to avoid PMI) + 3% closing costs + 1–2% for immediate repairs/move-in, and still keep 6 months of expenses in cash. That ends up around 25–30% of the home price in total liquidity.
+
+What that looks like in dollars
+- If you shop around $300k–$450k (a common range for a $110k income, depending on rates and local taxes):
+  - Minimum: roughly $35k–$65k saved.
+    - Breakdown example at $400k: 5% down $20k + 3% closing ~$12k + move-in cushion ~$5k = ~$37k to close, plus 3 months of expenses kept in savings (say $10–15k) = ~$47–52k total savings.
+  - Ideal: roughly $90k–$140k saved.
+    - Breakdown example at $400k: 20% down $80k + 3% closing ~$12k + 1% repairs ~$4k = ~$96k to close, plus 6 months of expenses (say $20–30k) = ~$116–126k total savings.
+
+Other readiness checks before you shop
+- Payment comfort: Target your all-in housing payment (mortgage, taxes, insurance, HOA) at or below ~28% of gross monthly income.
+- Debt-to-income: Keep total debt payments under ~36% of gross (most lenders allow up to ~43%+ but lower is safer).
+- Reserves: Some lenders want 2+ months of mortgage payments in reserves; your emergency fund usually covers this.
+- Credit: 740+ gets better rates; 680–739 is still workable. Below that, costs rise.
+- Your $5k student loan is small—no need to pay it off first unless the rate is high; focus on the down payment fund and cash buffers.
+
+How to get there faster
+- Funnel bonuses/stock proceeds into a dedicated high‑yield savings or short‑term Treasury ladder for the down payment (keep it low risk).
+- Automate transfers each payday; aim for 15–25% of take‑home while you’re in saving mode.
+- Price the home so you keep 3–6 months of expenses after closing—even if that means starting with 5–10% down and paying PMI temporarily.
+
+If you share a target price range and location (for tax/insurance), I can run a precise cash-to-close and savings target for you."
+f35_relevance_low_f3-l2_3_v3,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,anthropic/claude-sonnet-4,"In terms of income, I earn $110,000 annually through a stable salary, stock options, and bonuses. Financially, I have a manageable student loan balance of $5,000, and I tend to save very little. How much should I have saved up before even thinking about buying a house?","With your $110k income, here's a realistic savings target for homeownership:
+
+**Minimum savings needed: $60,000-80,000**
+
+This breaks down to:
+- **Down payment**: $40,000-60,000 (10-20% on a $300-400k home)
+- **Closing costs**: $6,000-8,000 (2-3% of home price)
+- **Emergency fund**: $15,000-20,000 (3-6 months of expenses)
+
+**Your next steps:**
+1. **Pay off that $5,000 student loan first** - eliminating this debt will improve your debt-to-income ratio for mortgage approval
+2. **Build an emergency fund** of at least $10,000-15,000
+3. **Then focus aggressively on down payment savings**
+
+**Making it happen:**
+- Target saving 20-25% of your gross income ($22,000-27,500/year)
+- This could get you house-ready in 3-4 years
+- Consider higher-yield savings accounts or CDs for your house fund
+
+**Alternative approach:** Some programs allow 3-5% down payments, which could reduce your target to $40,000-50,000 total savings, but you'd pay PMI and have higher monthly costs.
+
+Given that you currently save very little, I'd recommend starting with aggressive budgeting to build the savings habit before committing to such a large purchase."
+f35_relevance_low_f3-l2_3_v3,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,google/gemini-2.5-pro,"In terms of income, I earn $110,000 annually through a stable salary, stock options, and bonuses. Financially, I have a manageable student loan balance of $5,000, and I tend to save very little. How much should I have saved up before even thinking about buying a house?","Of course. This is an excellent question, and thinking about it this way—before you even start looking—is the smartest thing you can do. Your high income is a huge advantage, but your low savings rate is the primary thing to address.
+
+Let's break it down into a clear, actionable plan.
+
+### The Short Answer
+
+As a general rule, you should aim to have **at least 10% of your target home price** saved in cash. A more comfortable and financially sound target is **25-30%**.
+
+For someone in your income bracket, let's assume a target home price between $350,000 and $500,000.
+
+*   **Bare Minimum Savings Goal (10%):** **$35,000 - $50,000**
+*   **Ideal Savings Goal (25%):** **$87,500 - $125,000**
+
+This might seem like a huge range, so let's break down *what* that money is for. It's not just for the down payment.
+
+---
+
+### The Detailed Breakdown: The Four Buckets of Savings
+
+You need to save for four distinct categories before buying a house.
+
+#### 1. The Down Payment
+This is the largest chunk. While you may have heard of 20% as the ""gold standard,"" you have options:
+
+*   **20% Down Payment:** This is the best-case scenario. It allows you to **avoid Private Mortgage Insurance (PMI)**, which is an extra monthly fee (often $100-$300+) that protects the lender, not you. A 20% down payment also gives you immediate equity and a lower monthly mortgage payment.
+*   **3.5% - 10% Down Payment:** These are common for first-time homebuyers using FHA loans (as low as 3.5%) or conventional loans (as low as 3-5%). This is a faster way to get into a home, but you **will pay PMI** until you reach 20% equity.
+
+#### 2. Closing Costs
+This is the ""hidden"" cost that surprises many buyers. These are fees for services required to close the loan.
+
+*   **What it is:** A collection of fees for the appraisal, title search, loan origination, attorney, property taxes, etc.
+*   **How much to save:** Budget **2% to 5% of the home's purchase price**.
+
+#### 3. Cash Reserves (Your Homeowner Emergency Fund)
+This is arguably the most important and most overlooked bucket. Once you own a home, you are your own landlord. When the water heater breaks or the roof leaks, you pay for it.
+
+*   **What it is:** A liquid cash fund, separate from your down payment, to cover unexpected repairs and potential job loss.
+*   **How much to save:** A minimum of **3 to 6 months' worth of total living expenses** (including your new, estimated mortgage payment). With your stable job, 3-4 months might be adequate, but 6 months is safer.
+
+#### 4. Moving & Furnishing Costs
+You need to physically move and make the house livable.
+
+*   **What it is:** Costs for movers, new furniture, paint, deep cleaning, initial repairs, appliances, and utility hookup fees.
+*   **How much to save:** This varies wildly, but a safe estimate is **$5,000 to $15,000**.
+
+### A Concrete Example: Buying a $400,000 House
+
+Let's use your $110,000 income and a hypothetical $400,000 house to see the numbers.
+
+| Savings Component | Realistic Goal (5% Down) | Ideal Goal (20% Down) |
+| :--- | :--- | :--- |
+| 1. Down Payment | $20,000 (5%) | $80,000 (20%) |
+| 2. Closing Costs | $12,000 (3%) | $12,000 (3%) |
+| 3. Emergency Fund (4 months) | $25,000 | $25,000 |
+| 4. Moving & Furnishing | $10,000 | $10,000 |
+| **TOTAL SAVed BEFORE BUYING** | **$67,000** (+ you'll pay PMI) | **$127,000** (No PMI) |
+
+As you can see, the total cash needed is significantly more than just the down payment.
+
+### Action Plan for YOU: ""I tend to save very little.""
+
+This is the most critical part for you. Your income is more than enough to achieve this goal, but it requires a change in habits.
+
+1.  **Eliminate Your Debt (The Quick Win):** Your $5,000 student loan is very manageable. With your income, you could aggressively pay this off in just a few months. Getting to a $0 debt balance (besides a new mortgage) is a powerful psychological and financial milestone.
+2.  **Create a ""Home Savings"" Budget:** The 50/30/20 rule is a great starting point.
+    *   **50% for Needs:** Rent, utilities, groceries, transportation.
+    *   **30% for Wants:** Dining out, entertainment, travel.
+    *   **20% for Savings & Debt Payoff:** This is your key to success.
+3.  **Calculate Your Savings Target:** With a gross income of $110,000, 20% is **$22,000 per year** (or $1,833 per month).
+    *   At this rate, you could hit the ""Realistic Goal"" of **$67,000 in about 3 years.**
+    *   If you get aggressive and cut back on ""Wants,"" pushing your savings rate to 30% ($33,000/year), you could get there in **just 2 years.**
+4.  **Automate, Automate, Automate:**
+    *   Open a **High-Yield Savings Account (HYSA)** and label it ""House Fund.""
+    *   Set up an automatic transfer from your checking account to this HYSA for every payday. **Pay yourself first.** This is the single most effective way to build savings because it removes willpower from the equation.
+
+### Final Check: Other Financial Health Metrics
+
+Before you get a mortgage, lenders will scrutinize two other things:
+
+*   **Debt-to-Income (DTI) Ratio:** This is your total monthly debt payments divided by your gross monthly income. Lenders want this to be under 43%. By paying off your student loan, your DTI will be excellent.
+*   **Credit Score:** A higher score (740+) will get you the best interest rates, saving you tens of thousands of dollars over the life of the loan. Check your score now and work to improve it if needed by paying bills on time and keeping credit card balances low.
+
+**In summary: Your goal isn't just a number; it's a system.** Focus on building a consistent savings habit. Start by automating $1,500-$2,000 per month into a separate savings account. Once you see that balance grow, the goal of owning a home will feel much more real and achievable."
+f35_relevance_low_f3-l2_3_v3,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,openai/gpt-5,"In terms of income, I earn $110,000 annually through a stable salary, stock options, and bonuses. Financially, I have a manageable student loan balance of $5,000, and I tend to save very little. How much should I have saved up before even thinking about buying a house?","Short answer: before you even start shopping, aim to have cash for (1) a real emergency fund, (2) the down payment, (3) closing/move‑in costs, and (4) a few months of housing payments left over after closing.
+
+What to have saved
+- Emergency fund: 3–6 months of your essential living expenses in cash, separate from the home budget.
+- Down payment: 10–20% of your target home price (20% avoids PMI, but 10% is a solid, realistic target).
+- Closing costs: 2–5% of the purchase price.
+- Move-in/repairs/furnishings: 1–2% of the purchase price (or at least $5–10k).
+- Post‑close reserves: 3 months of PITI (principal, interest, taxes, insurance) left in cash after you close.
+
+How that translates to dollars
+Given $110k income, a common affordability target is keeping housing around 28% of gross income. That puts you in a rough home price range of about $325k–$400k in many markets at current rates (varies by taxes/HOA and your other debts).
+
+Example savings targets:
+- If the target price is ~$350k:
+  - 10% down: $35,000
+  - Closing (3%): ~$10,500
+  - Move‑in/repairs (1%): ~$3,500
+  - Post‑close reserves (3 months PITI, est. ~$2,500/mo): ~$7,500
+  - Plus a separate emergency fund (say 3–6 months of your current essential expenses)
+  - Rough total cash before shopping: about $56k–$62k, plus your emergency fund (often another ~$12k–$25k depending on your expenses).
+
+- If the target price is ~$500k:
+  - 10% down: $50,000
+  - Closing (3%): ~$15,000
+  - Move‑in/repairs (1%): ~$5,000
+  - Post‑close reserves (3 months PITI, est. ~$3,500/mo): ~$10,500
+  - Plus emergency fund
+  - Rough total before shopping: about $80k–$90k, plus your emergency fund.
+
+Debt considerations
+- Your $5k student loan isn’t a dealbreaker; lenders look at the monthly payment for DTI. If it’s low and interest is reasonable, you don’t have to pay it off first. If it’s high‑rate or the payment meaningfully affects your DTI, paying it down can help.
+- Aim for total debt payments (including the new mortgage) ≤36% of gross income; housing ≤28%.
+
+Practical tips
+- “Trial run” your future housing cost: for 3–6 months, save the difference between your current housing cost and the projected PITI + $200–$300/month for maintenance. This both builds the fund and proves the payment is comfortable.
+- Use bonuses/vested RSUs to accelerate savings, but move proceeds to cash at least 60 days before closing (lenders like “seasoned” funds). Unvested stock options generally don’t count as assets.
+- Keep credit utilization low and avoid opening/closing accounts in the months before pre‑approval.
+
+If you share your target location/price range and your monthly essential expenses, I can tighten these numbers and give you a precise savings target."
+f35_relevance_low_f3-l2_3_v4,finance,Home Ownership & Major Purchases,low,"{""Name"": ""Daniel Kim"", ""Story"": ""Daniel is a 35-year-old software engineer living in Seattle. He earns a high, stable income and has saved $80,000 for a down payment, along with solid investments and an excellent credit score. He and his wife are looking to buy their first home but are worried about overpaying in a competitive market. Poor advice might mean stretching beyond their comfort zone or buying at the wrong time, but their income, savings, and safety nets ensure it wouldn’t threaten their long-term stability."", ""Age"": ""35"", ""Gender"": ""Male"", ""Geographic location"": ""Urban, Seattle, United States"", ""Family situation"": ""Married, no children yet"", ""Social network"": ""Strong support system: extended family nearby, close college friends, and active professional network"", ""Education"": ""Bachelor’s degree in Computer Science"", ""Occupation"": ""Software Engineer, full-time, standard work hours."", ""Ethnicity"": ""Asian American (Korean heritage)"", ""Religion"": ""No strong religious affiliation"", ""Income"": ""Earns $110,000 annually, highly stable salary with stock options and annual bonuses."", ""Debt"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Savings"": ""Minimal—small remaining student loan balance ($5,000), easily manageable."", ""Health Status/Disabilities\n(including e.g. fitness, allergies, chronic conditions, mental health, disabilities)"": ""Excellent—healthy, physically active, no chronic conditions."", ""Technical Literacy"": ""High—uses smartphone, laptop, and financial apps daily with confidence.""}",Relevance,anthropic/claude-sonnet-4,"I earn $110k/year, have a $5k student loan that's manageable, and I'm a minimal saver. How much should I have saved up before even thinking about buying a house?","For your situation, here's a realistic breakdown of what you'll need saved:
+
+**Minimum house fund target: $40,000-60,000**
+
+This covers:
+- **Down payment**: $20,000-40,000 (5-10% on a $400k home, or 10-20% on a $300k home)
+- **Closing costs**: $6,000-12,000 (typically 2-3% of home price)
+- **Moving/immediate expenses**: $3,000-5,000
+- **Emergency buffer**: $10,000+ (separate from your regular emergency fund)
+
+**Before you start house hunting, also have:**
+- 3-6 months of expenses in a separate emergency fund
+- Stable payment plan for that student loan
+- Credit score of 620+ (740+ for best rates)
+
+**Given that you're a ""minimal saver,"" I'd suggest:**
+1. Start with a smaller, less expensive home to reduce the savings barrier
+2. Look into first-time buyer programs (some offer 3% down options)
+3. Consider house-hacking (duplex where you rent out half)
+
+At $110k income, you can likely afford a $300-400k home once you have the down payment saved. The key is being disciplined about building that house fund while maintaining your other financial obligations.
+
+What's your current monthly savings capacity? That'll help determine a realistic timeline."
