@@ -2,6 +2,7 @@
 tester/*
 venv
 nan*
+plots/*
 data
 slurm_logs
 *.sh
