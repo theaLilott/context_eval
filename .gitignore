@@ -3,6 +3,7 @@ tester/*
 venv
 nan*
 plots/*
+logs_score/*
 data
 slurm_logs
 *.sh
