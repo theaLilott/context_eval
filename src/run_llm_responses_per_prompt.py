@@ -20,6 +20,8 @@ MODELS_FOR_ALL = [
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
+import requests
+
 def get_model_response(prompt, model, apikey=OPENROUTER_API_KEY, max_retries=3):
     headers = {"Authorization": f"Bearer {apikey}"}
     payload = {
@@ -29,17 +31,33 @@ def get_model_response(prompt, model, apikey=OPENROUTER_API_KEY, max_retries=3):
     }
     if payload["temperature"] is None:
         del payload["temperature"]
-    r = None
+
     for attempt in range(max_retries):
         try:
             r = requests.post(API_URL, json=payload, headers=headers)
+            if r.status_code == 403:
+                # Try to get error code and reason from body
+                try:
+                    error_info = r.json().get('error', {})
+                    message = error_info.get('message', '').lower()
+                    metadata = error_info.get('metadata', {})
+                    if 'moderation' in message or 'flagged' in message or 'moderation' in metadata.get('provider_name', ''):
+                        print(f"🚩 Moderation error (content flagged) for model {model}, prompt: {prompt[:50]}...")
+                    else:
+                        print(f"🚫 Access/credits error for model {model}. Message: {message}")
+                except Exception as parse_exc:
+                    print(f"403 error but could not parse JSON: {parse_exc}")
+                return None  # or handle as you wish
             r.raise_for_status()
             return r.json()["choices"][0]["message"]["content"]
         except Exception as e:
             print(f"Attempt {attempt+1} failed with model {model}: {e}")
-            time.sleep(2)  # wait 2 seconds before retry
-    print(f"Giving up on model {model}. Last error: {e}")
-    return f"ERROR: {e}"
+            time.sleep(2)
+    print(f"❌ All attempts failed for model {model}. Skipping and returning NaN.")
+    return None
+
+
+
 
 
 def main():

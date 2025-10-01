@@ -293,6 +293,7 @@ def call_judge(prompt, model, apikey, temperature=0.0, api_url="https://openrout
         "messages": [{"role": "user", "content": prompt}],
         "temperature": temperature
     }
+    e = None
     for attempt in range(max_retries):
         try:
             r = requests.post(api_url, json=payload, headers=headers)
