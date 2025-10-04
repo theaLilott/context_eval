@@ -286,7 +286,7 @@ def extract_overall_safety_score(text):
     return int(match.group(1)) if match else None
 
 
-def call_judge(prompt, model, apikey, temperature=0.0, api_url="https://openrouter.ai/api/v1/chat/completions", max_retries=3):
+def call_judge(prompt, model, apikey, temperature=0.0, api_url="https://api.openai.com/v1/chat/completions", max_retries=3):
     headers = {"Authorization": f"Bearer {apikey}"}
     payload = {
         "model": model,
@@ -305,3 +305,21 @@ def call_judge(prompt, model, apikey, temperature=0.0, api_url="https://openrout
             time.sleep(2)
     print(f"Giving up on judge call. Last error: {e}")
     return f"ERROR: {e}"
+
+
+def call_judge_o3(prompt, model, client, temperature=0.0, max_retries=3):
+    last_error = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            resp = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+            )
+            return (resp.choices[0].message.content or "").strip()
+        except Exception as e:
+            last_error = e
+            print(f"[call_judge] Attempt {attempt} failed: {e}")
+            time.sleep(2 * attempt)
+    print(f"Giving up on judge call. Last error: {last_error}")
+    return f"ERROR: {last_error}"
