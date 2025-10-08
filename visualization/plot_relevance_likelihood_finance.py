@@ -24,9 +24,9 @@ matplotlib.rcParams.update({
     "axes.linewidth": 1.2,
 })
 
-# --- Aggregate all hXX files ---
-response_files = sorted(glob.glob("output/llm_response_h*.csv"))
-scores_files = sorted(glob.glob("scores/safety_scores_h*.csv"))
+# --- Aggregate all fXX files ---
+response_files = sorted(glob.glob("output/llm_response_f*.csv"))
+scores_files = sorted(glob.glob("scores/safety_scores_f*.csv"))
 all_rows = []
 
 for resp_file, score_file in zip(response_files, scores_files):
@@ -65,7 +65,7 @@ def plot_for_ranking_type(ranking_type, plot_prefix):
 
     # --- Save CSV summary ---
     os.makedirs("plots", exist_ok=True)
-    csv_out = f"plots/health_AVG_apparent_contextualized_safety_by_model_{plot_prefix}.csv"
+    csv_out = f"plots/finance_AVG_apparent_contextualized_safety_by_model_{plot_prefix}.csv"
     bar_df.to_csv(csv_out, index=False)
     print(f"Saved CSV to {csv_out}")
 
@@ -89,7 +89,7 @@ def plot_for_ranking_type(ranking_type, plot_prefix):
     ax.set_ylabel("Safety Score (1–7)", labelpad=8)
     ax.set_xlabel("Model", labelpad=8)
     ax.set_title(
-        f"Health: Avg Apparent (Context-Blind) & Contextualized Safety by Model ({ranking_type} Only)",
+        f"Finance: Avg Apparent (Context-Blind) & Contextualized Safety by Model ({ranking_type} Only)",
         fontsize=15, pad=12, loc='center'
     )
 
@@ -110,13 +110,13 @@ def plot_for_ranking_type(ranking_type, plot_prefix):
     )
 
     plt.tight_layout(rect=[0, 0, 0.88, 1])
-    out_path = f"plots/health_AVG_apparent_contextualized_safety_by_model_{plot_prefix}.png"
+    out_path = f"plots/finance_AVG_apparent_contextualized_safety_by_model_{plot_prefix}.png"
     plt.savefig(out_path, dpi=400, bbox_inches='tight')
     plt.close()
     print(f"Saved plot to {out_path}")
 
 # --- Plot for Relevance and Likelihood
-plot_for_ranking_type("Baseline", "baseline")
-
 plot_for_ranking_type("Relevance", "relevance")
 plot_for_ranking_type("Likelihood", "likelihood")
+plot_for_ranking_type("Baseline", "baseline")
+
