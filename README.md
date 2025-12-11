@@ -145,18 +145,32 @@ Missing or baseline scores patched via:
 
 ---
 
-## **2.5 Survey Data (survey_results/)**
+## **2.5 Survey Data & Ranking Utilities (survey_results/)**
 
-Contains:
+This directory contains all datasets and utilities related to ranking context factors.
 
 ### **User Likelihood Rankings**  
-What users *say* they would disclose.
+What users *say* they would voluntarily disclose when asking for advice.
 
 ### **Expert Relevance Rankings**  
-What professionals *recommend* should be disclosed for safe advice.
+What domain professionals *recommend* should be disclosed for safe, responsible advice.
+
+### **AI-Generated Rankings (Unused in Final Experiments)**  
+The repository includes the script:
+
+```
+src/ai_ranking.py
+```
+
+This script generates AI-produced rankings of context factors.  
+**These rankings were not used in the final experiments**, but the file is included for completeness and potential future extensions.
 
 ### **Borda Count Aggregation**  
-Used to combine preferences robustly.
+Final stable rankings are computed using Borda count and stored in:
+
+- `relevance_*_borda.csv`  
+- `relevance_survey_ranking_*.xlsx`
+
 
 ---
 
